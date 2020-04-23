@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- action 表示表单提交到哪里 -->
+    <form action="http://www.baidu.com" class="form" name="form1">
+        <div>
+            <label for="username">用户名：</label>  <!-- for 可以其他标签相关联 成为一个整体 提高用户体验 -->
+            <input type="text" placeholder="输入用户名" id="username" name="username"/>  
+        </div>   <!-- placeholder 表示框内文字 -->
+        <div>
+            <label for="password">密码：</label>
+            <input type="text" placeholder="输入密码" id="password" name="password">
+        </div>
+        <div>
+            <label for="repassword">确认密码：</label>
+            <input type="text" placeholder="再次输入密码" id="repassword" name="repassword">
+        </div>
+        <div>
+            <label for="sex">性别:</label>
+            <!-- value 为默认值  name 表示nan nv均为 sex的选项-->
+            <input type="radio" value="nan" name="sex" id="nan" checked/>
+            <label for="nan">男</label>
+            <input type="radio" value="nv"  name="sex" id="nv"/>
+            <label for="nv">女</label>
+        </div>
+        <div>
+            <label for="hobby">爱好：</label>
+            <select name="hobby" id="hobby">
+                <option value="dog">dog</option>
+                <option value="cat" selected>cat</option>  <!--selected 可以使之成为默认值-->
+            </select>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <div>
+        <span>用户名：</span>
+        <span>密码：</span>
+        <span>性别：</span>
+        <span>爱好：</span>
+    </div>
+    <script>
+        //document(所有标签).（.表示下一级）forms  取到所有的表单
+        const form = document.forms.form1;
+        console.log(form);
+        const hobby = form.hobby.value
+        console.log(hobby);
+        form.addEventListener('submit',function(event){      //EventListener 事件监听器
+            console.log('提交了')
+            //阻止html 表单默认的特点
+            event.preventDefault();
+            const username = form.username.value;
+            const password = form.password.value;
+            const repassword = form.repassword.value;
+            const sex = form.sex.value;
+            const hobby = form.hobby.value;
+            if(username.length === 0){
+                alert('username 不能为空 ');
+                return;
+            }
+            if(repassword.trim() !== password){
+                alert('密码不一致');
+                return;
+            }
+        // 显示：动态构造  html结构
+        //构造一个div
+        const div = document.createElement('div');
+        //设置内部的html结构  
+        div.innerHTML = `   
+        <span>用户名:${username}</span>
+        <span>密码：${password}</span>
+        <span>性别：${sex}</span>
+        <span>爱好：${hobby}</span>
+        `
+        //插入到页面上
+        document.body.appendChild(div)
+        }) //回调函数  当发生submit的时候再来调用该函数  
+    </script>
+</body>
+</html>

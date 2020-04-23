@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .lazy-load{
+            width: 265px;
+            height: 265px;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/030c6a66053f2c7e08082ffc31d930cd.png?type=webp&quality=95&thumbnail=265x265&imageView">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/98e583f326a5c27fa8aaf5b46f8c08bc.jpg?type=webp&quality=95&thumbnail=265x265&imageView">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/d6274bbe52940e0fbdd2143b9811fcb1.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/0c30426d9114ef4649a053ddac31fe07.png?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/e591a4717814d656f5fe8cca4a612bf2.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/e591a4717814d656f5fe8cca4a612bf2.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/fb6b455a6875a5fe1d7eaacdecf6ebc6.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/32b2de5d579562ccc989c696e2ff6231.png?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/50eecf6afe7e8596c7ebf2a25474bed9.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/89860dee17e2283488ea9f57fe8db14e.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/46900a81b99aa5383793dd48b033eb66.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <img src="http://yanxuan.nosdn.127.net/d4786274dc46e7b25b2c506a552c5cb5.png?imageView&type=webp" class="lazy-load" lazyload="true" data-original="https://yanxuan-item.nosdn.127.net/46900a81b99aa5383793dd48b033eb66.jpg?type=webp&imageView&quality=95&thumbnail=355x355">
+    <script>
+        function lazyLoad(){
+            const allImages = document.querySelectorAll("img[lazyload]");
+            let viewHeight = window.innerHeight;
+            for(let oldImg of allImages){
+                let size = oldImg.getBoundingClientRect();
+                if(size.top < viewHeight && size.bottom > 0){
+                    let origianlSrc = oldImg.getAttribute('date-original')
+                    const img = new Image();
+                    img.src = origianlSrc;   //此时浏览器已经开始加载
+                    img.onload = function(){
+                        oldImg.src = origianlSrc;
+                        img,removeAttribute('lazyload')
+                    }
+                }
+            }
+        }
+        lazyLoad();
+        window.addEventListener('scoll',lazyLoad)
+    </script>
+</body>
+</html>
