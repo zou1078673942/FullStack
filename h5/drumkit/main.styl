@@ -1,0 +1,40 @@
+*
+    margin 0
+    padding 0
+html
+    font-size 10px
+    // 背景图片关于 html 上下居中
+    background url(http://img5.imgtn.bdimg.com/it/u=4103888617,3742418678&fm=26&gp=0.jpg) bottom center
+    background-size 100%
+.keys
+    // 给弹性布局添加一个兼容属性
+    display: -webkit-flex
+    display flex
+    justify-content: center
+    align-items: center
+    min-height 100vh
+    // stylus最重要的特性 代码的嵌套
+    .key
+        margin 1rem
+        border .4rem solid #000000
+        border-radius: 1.5rem
+        font-size: 1.5rem
+        padding: 1rem 0.5rem
+        width 10rem
+        text-align: center    
+        width 10rem
+        text-align center
+        color white
+        background reba(0,0,0.4)
+        text-shadow: 0 0 .5rem black
+        transition  all .07s ease 
+        div
+            display: block
+            font-size 4rem
+        .sound
+            font-size 1.2rem
+            text-transform: uppercase
+            letter-spacing: .1rem
+            color #ffc600
+    .keyBoard
+        animation: 
