@@ -1,0 +1,23 @@
+<script>
+//  类似数组的对象
+//  可以和数组类似 用 [i] 取值，还有 length 属性
+//  有数组的特征
+//  但是有不全是数组
+//  例如 arguement  NodeList（即querySelectorAll选出来的对象）
+function foo(){
+    //不确定有几个参数
+    // console.log(arguments);
+    //   方法1： 借用，通过 call 改变 forEach 内部的 this
+    Array.prototype.forEach.call(arguments, function(num){
+        console.log(num);
+    })
+    //   方法2： Array.from() 从一个类似数组的对象创建一个新的数组
+    const arr = Array.from(arguments);
+    arr.forEach(function(num){
+        console.log(num)
+    })
+}
+// 例如 取最大值的函数
+foo(0,1,2)
+// console.log(Math.max(1,2,3,4,5));
+</script>
