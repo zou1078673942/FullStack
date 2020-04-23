@@ -1,0 +1,46 @@
+*{
+    
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4c4c4c url(https://unsplash.it/1500/900?image=1021);
+    background-size: cover;  /* 图片拉伸填充整个页面 */
+}
+
+.wrapper{
+    width: 850px;
+    display: flex;
+}
+
+video{
+    box-shadow: 0 0 1px 3px rgba(0,0,0,0.1);
+}                           /* rgba 表示颜色 如上表示 #000 透明度0.1 */
+
+.speed{
+    flex: 1;  /* 比例  按比继承父容器 */
+    background: #efefef;
+    display: flex;
+    align-items: flex-start;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 0 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}                   
+
+.speed-bar{
+    width: 100%;
+    height: 16.3%;
+    background: linear-gradient(-170deg,#000 0%,#fff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    color: #fff;
+    cursor: pointer;
+}

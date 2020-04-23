@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:100px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+    <title>MY</title>
+    <script type="text/javascript" 
+        src="https://api.map.baidu.com/api?v=2.0&ak=47FQtS6XkphGqmZ5nSEj6WTSTwE8SGaT">
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*  body前面 不加 符号的时候对应 html标签   */ 
+        /*        加  #  对应  id     */
+        /*        加  .  对应  class  */
+        body{   
+            font-size: 0.28rem;  /*设置字体大小*/
+            line-height: 1.5;
+        }
+        img{
+            max-width: 100%;
+        }
+        #map{
+            width: 100vw;
+            height: 100vh;
+        }
+        .poi-item-wrapper{
+            background-color:#fff;
+            padding: 0.24rem 0 0 0.3rem;
+            border-bottom:1px solid #e5e5e5;
+        }
+        .poi-item-wrapper .poi-info-wrapper{
+            display: flex;
+        }
+        .poi-item-wrapper .image-wrapper{
+            position: relative;
+            margin-top: 0.05rem;
+            width: 1.6rem;
+            height: 1.61rem;
+        }
+        .poi-item-wrapper .poi-info{
+            margin-left: 0.18rem;
+            flex:1 ;
+        }
+        .poi-item-wrapper .poi-info .price-wrapper{
+            position:relative;
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+            margin-top: 0.06rem;
+            overflow: hidden;  /* 溢出 */
+            text-overflow: ellipsis;  /*  溢出之后的处理方式  ellipsis表示显示  省略符号  来代表被修剪的文本  */
+            white-space: nowrap;  /* 处理元素内的空白 */
+            height: 2rem;
+        }
+        .poi-item-wrapper .poi-info .location {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0.33rem;
+            line-height: 0.33rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            color: #666666;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shop-list">
+        <div class="poi-item-wrapper">
+            <div class="poi-info-wrapper">
+                <div class="image-wrapper">
+                    <div class="imgbox">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="poi-info">
+                    <div class="poi-name"></div>
+                    <div class="price-wrapper">
+                        <div class="location"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //我的位置  116.263994,29.738586
+        const myLatitude = '29.738586',
+            myLongitude = '116.263994',
+        //目标位置  116.262625,29.735734
+            decLatitude = '29.735734',
+            decLongitude = '116.262625';
+        //  坐标 店名 评分     ...{     }  JSON  对象字面量
+        const shops = [
+            {
+                name:'肯德基莲塘店',
+                pos:[ ]
+            }
+        ];
+        window.onload = function(){
+            function parseDistance(distance){
+                if(distance < 1000){
+                    return parseInt(distance);
+                }else{
+                    return (distance/1000).toFixed(1);
+                }
+            }
+            const map = new BMap.Map();
+            const myPoint = new BMap.Point(myLongitude,myLatitude);
+            const decPoint = new BMap.Point(decLongitude,decLatitude);
+            const distance = parseDistance(
+                map.getDistance(myPoint,decPoint)
+            );
+            document.querySelector('.poi-name').innerHTML =  '德克士';
+            document.querySelector('.location').innerHTML = distance;
+            document.querySelector('.imgbox img').src = 
+                "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+        }
+    </script>
+</body>
+</html>
