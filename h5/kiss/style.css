@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #789d67;
+}
+.container{
+    position: absolute;  /*  相对于父容器定位  */
+    top: 50%;
+    left: 50%;
+    width: 232px;
+    /* margin-left: -116px;  方法一 */
+    transform: translate(-50%,-50%);/* translate 中的百分比是根据自己 而不是根据父容器 */
+    font-size: 0;  
+}
+.ball{
+    border: 8px solid;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: inline-block;  /*  变成行内   块集  */
+    position: relative;  /* 相对定位，可供子容器中的absolute 定位 */
+}
+.face{
+    position: absolute;  /* 根据父容器定位  即 container  */ 
+    width: 70px;
+    height: 30px;
+    right: 0;
+    top: 30px;
+    vertical-align: top;  /* 向上对齐 */
+    position: absolute;
+}
+
+.face::before{         /* 尾类： 没有真实html结构   css加载时间小于html  提高代码性能  */
+    content: "";  /* 尾类必要的内容 */ 
+    width: 18px;
+    height: 8px;
+    background-color: #badc58;
+    border-radius: 50%;
+    position:absolute;
+    right: -8px;
+    bottom: 20%;
+}
+.face::after{
+    content:"";
+    width: 18px;
+    height: 8px;
+    background-color: #badc58;
+    border-radius: 50%;
+    position: absolute;
+    left: -8px;
+    bottom: 20%;
+}
+
+.eye{
+    width: 15px;
+    height: 14px;
+    border-radius: 50%;
+    border-bottom: 5px solid #000;
+    position: absolute;
+}
+.eye-l{
+    left: 10px;
+}
+.eye-r{
+    right: 5px;
+}
+.mouth{
+    width: 30px;
+    height: 14px;
+    border-radius: 50%;
+    border-bottom: 5px solid #000;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.face-r{
+    left: 130px;
+    top: 37px;
+}
+.face-r::before{
+    width: 10px;
+    height: 10px;
+    right: -4px;
+}
+.face-r::after{
+    width: 10px;
+    height: 10px;
+    left: 5px;
+}
+.eye-r-c{
+    border-top: 5px #000;
+    border-top: 5px solid #000;
+    border-bottom: 5px solid #fff;
+
+}
+.face-l{
+    animation: face 4s ease infinite;
+}
+.face-r{
+    animation: rotate 4s ease infinite;
+}
+#l-ball{
+    animation: close 4s ease infinite;
+    z-index: 99;
+}
+#r-ball{
+    animation: rotate 4s ease infinite;
+}
+.kiss-t{
+    border-radius: 50% ;
+    border-left-color: black;
+    opacity:0;  /* 透明度 */
+    position: absolute;
+    left: 20px;
+    top: 22px;
+    animation: kiss 4s ease infinite;
+}
+.kiss-b{
+    border-radius: 50% ;
+    border-left-color: black;
+    opacity:0;  /* 透明度 */
+    position: absolute;
+    left: 20px;
+    top: 24px;
+    animation: kiss 4s ease infinite;
+}
+
+.month-r{
+    animation: kiss_1 4s ease infinite;
+}
+
+@keyframes kiss_1{
+    0%{opacity: 1;}
+    54.9%{opacity: 0;}
+    55.2%{opacity: 0;}
+    66.2%{opacity: 1;}
+}
+
+@keyframes kiss{
+    0%{opacity: 0;}
+    55%{opacity: 1;}
+    55.1%{opacity: 1;}
+    66.1%{opacity: 0;}
+}
+
+
+
+@keyframes rotate{
+    0%{transform:translate(0) rotate(0);}
+    40%{transform:translate(0) rotate(0);}
+    50%{transform:translate(20px) rotate(15deg);}
+    60%{transform:translate(-25px) rotate(-15deg);}
+    67%{transform:translate(-25px) rotate(-15deg);}
+    77%{transform:translate(0) rotate(0);}
+}
+
+@keyframes close{
+    0%{ transform: translate(0);}
+    20%{ transform: translate(20px);}
+    35%{ transform: translate(20px);}
+    55%{ transform: translate(0);}
+    100%{ transform: translate(0);}
+  }
+  
+@keyframes face{   /*  以时间为单位  */
+    0%{ transform: translate(0) rotate(0);}
+    10%{ transform: translate(0) rotate(0);}
+    20%{ transform: translate(5px) rotateZ(-2deg);}
+    30%{ transform: translate(0) rotate(0);}
+    40%{ transform: translate(5px) rotate(-2deg);}
+    50%{ transform: translate(0) rotate(0);}
+    100%{ transform: translate(5px) rotate(-2deg);}
+}
