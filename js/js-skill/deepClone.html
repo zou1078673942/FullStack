@@ -1,0 +1,37 @@
+<!-- 深拷贝 -->
+<script>
+    let obj ={
+        name: 'name',
+        sex: 'sex',
+        a:{
+            b:{
+                c:1
+            }
+        }
+    }
+    // 递归思路
+    // 1. 大问题化为小问题  每个小问题的解决方式都一样
+    // 2. 自己调用自己
+    // 3. 有终止条件
+    function deepClone(obj){
+        let res = {};
+        for (let key in obj){
+            // console.log(key);
+            if (typeof obj[key] === 'object'){
+                res[key] = deepClone(obj[key])
+            }else{
+                res[key] = obj[key] //表示 key 是一个变量
+            }
+        }
+        return  res;
+    }
+    let obj2 = deepClone(obj)
+    obj2.name = 'obj2 name'
+    obj2.a.b.c = 15
+    // 浅拷贝 只能拷贝第一层，例如 a 内部元素的地址还是相同
+    // 如果里面有嵌套还需要进行下一层拷贝 
+    // 用 typeof 检测类型 如果值为 object 
+    // 则需要一直进行拷贝  基本数据类型可直接复制
+    // 复杂数据类型则需要一直进行拷贝
+    console.log(obj2,obj)
+</script>
