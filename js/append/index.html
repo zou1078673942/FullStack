@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append child dom api</title>
+</head>
+
+<body>
+    <ul id="students"></ul>
+    <script>
+        const students = [{
+            id: 1,
+            name: '刘策',
+            github:"https://huangyichao0916.github.io/lesson_bm/"
+        }, {
+            id: 2,
+            name: '张',
+            github:"https://huangyichao0916.github.io/lesson_bm/"
+        },
+        {
+            id: 3,
+            name: '刘',
+            github:"https://huangyichao0916.github.io/lesson_bm/"
+        }]
+        const oUl = document.getElementById('students');
+        oUl.addEventListener('click',function(){
+            alert('')
+        })
+        oUl.style.fontSize = '20px';
+        // li 已经在内存之中，是一个节点对象 
+        // js 节点对象 -> html 对象的转化
+
+        // 节点树
+        const temp = document.createDocumentFragment();    // 垫片！！！ 文档碎片
+        for (let student of students) {
+            const oLi = document.createElement('li');
+            const oA = document.createElement('a');
+            // nodetype 为节点值 
+            // console.log(oLi.nodeType);
+            oLi.className = 'item';
+            // html 标签可以用js来创建
+            oA.setAttribute("href",student.github)
+            // target = _blank 表示在新窗口打开链接
+            oA.setAttribute('target',"_blank")
+            const oText = document.createTextNode(student.name);
+            oA.appendChild(oText);
+            // oA.addEventListener('click',function(event){
+            //     event.preventDefault();
+            //     alert(this.innerText);
+            // })
+            // console.log(oText.nodeType);
+            oLi.appendChild(oA);
+            temp.appendChild(oLi);
+            // oUl.appendChild(oLi);
+            //   ！！！！！！！！！！！！！！！！！！！！性能问题！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+            //   页面有 3次 重新绘制 和 刷新
+            //  appendChild li -> ul
+            //  js DOM 性能消耗比较大
+        }
+        oUl.appendChild(temp);
+        // querySelectorAll 获取的是 伪数组 ，可以for forEach length 等
+        // 但是仅此而已   数组的高级功能都不支持
+        const studentLis = document.querySelectorAll('.item');
+        // forEach 的时候第一个参数为目录  index为下标(第几个)
+        studentLis.forEach((li,index) => {
+            let oA = li.querySelector('a');
+            const oSpan = document.createElement('span')
+            oSpan.appendChild(document.createTextNode(students[index].id));
+            // insertBefore(o1,o2)    在 o2 前面插入一个 o1 节点
+            li.insertBefore(oSpan,oA);
+        })
+        // studentLis.forEach(li => {
+        //     console.log(li);
+        // })
+        // console.log(studentLis[0].childNodes[0].innerText);
+        // // 过滤
+        // console.log([...studentLis].filter(li => {
+        //     return li.childNodes[0].innerText == '刘策'}))
+    </script>
+</body>
+
+</html>

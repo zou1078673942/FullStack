@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- <button class="like-btn">
+            <span class="link-text">点赞</span>           
+        </button> -->
+    </div>
+    <script>
+        // const button = document.querySelector('.like-btn')
+        // const buttonText = document.querySelector('.link-text')
+        // function rander(){
+        //     let isLiked = false;
+        //     button.addEventListener('click',()=>{
+        //         isLiked = !isLiked;
+        //         isLiked ? buttonText.innerHTML = '取消': buttonText.innerHTML = '点赞';
+        //     },false)
+        // }
+        // rander();
+        //  封装
+        // dom  createElment appendChild
+        const createDOMFromString = (domString) => {
+            const oDiv = document.createElement('div');   // 创建一个 dom 节点
+            oDiv.innerHTML = domString;
+            return oDiv;
+        }
+        class LikeButton{
+            // 当 new 一个新的 class 的时候 
+            // constructor 构造函数 就会被执行
+            constructor() {
+                this.el = null;
+                this.state = { isLiked: false}
+            }
+            // 渲染到页面上
+            rander(){
+                this.el = createDOMFromString (`
+                    <button id='like-btn'>
+                        <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>
+                    </button>
+                `)
+                this.el.addEventListener('click',this.changeLikeText.bind(this),false);
+                return this.el;
+            }
+            changeLikeText(){
+                // console.log(this)
+                this.state.isLiked = !this.state.isLiked;
+                const likeText = this.el.querySelector('.link-text');
+                likeText.innerHTML = this.state.isLiked?'取消':'点赞';
+            }
+        }
+        const wrapper = document.querySelector('.wrapper');
+        const likeButton = new LikeButton();
+        wrapper.appendChild(likeButton.rander());
+        // const likeButton2 = new LikeButton();
+        // wrapper.innerHTML += likeButton2.rander();
+    </script>
+</body>
+</html>

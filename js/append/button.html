@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper"></div>
+    <script>
+        //  万金油！
+        const createDOMFromString = (domString) => {
+            const oDiv = document.createElement('div');   // 创建一个 dom 节点
+            oDiv.innerHTML = domString;
+            return oDiv;
+        }
+        class LikeButton {
+            constructor(){
+                // 申明属性 状态
+                this.state = {
+                    isLiked: false
+                }
+            }
+            rander(){
+                this.el = createDOMFromString(`
+                <button id='like-btn'>
+                        <span class='link-text'>${this.state.isLiked?'取消':'点赞'}</span>
+                    </button>
+                `)
+                //   添加了 addEventListener 之后 this就指向了 调用addEventListener的元素 需要bind(this)
+                this.el.addEventListener('click',this.changeLikeText.bind(this),false);
+                return this.el;
+            }
+            changeLikeText(){
+                this.setState({
+                    isLiked: !this.state.isLiked
+                })
+            }
+            setState(state){
+                console.log(this.state,state)
+                const oldEl = this.el;
+                const parent = this.el.parentNode;
+                this.state = state;
+                this.el = this.rander( ) // 在渲染一下？？？
+                parent.insertBefore(this.el,oldEl)
+                parent.removeChild(oldEl);  //  react ??
+            }
+        }
+        const wrapper = document.querySelector('.wrapper');
+        const likeButton = new LikeButton();
+        //  点赞功能组件
+        wrapper.appendChild(likeButton.rander());
+    </script>
+</body>
+</html>
