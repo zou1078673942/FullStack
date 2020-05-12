@@ -1,0 +1,36 @@
+<script>
+    const max = Math.max( -1, -9, -5);
+    let arr = [10, 9, 8, 7]
+    // ...arr 可以将这个数组展开
+    // 展开运算符  spread
+    const max1 = Math.max(...arr)
+
+
+    // ... 还可以将字符串 变成数组
+    let str = 'abcde';
+    let arr1 = [...str]
+
+
+    // ... 还可对对象进行操作
+    let obj = {
+        name:'name', sex:'sex'
+    }
+    console.log({...obj});
+    //---------------------------
+    // 指向同一份地址  obj 和 obj1任何一个改变都会改变另一个 
+    // 如何避免这种情况？ 对于 obj 进行一次复制、拷贝
+    // 浅复制  只复制第一层，对于其中嵌套的内容不复制 
+    // let obj1 = obj;         这样声明会使得 两个对象指向同一个地址
+    let obj1 = {...obj}     // 这样可以让 obj1 所指向的地址与 obj 不同
+    delete obj1.name;
+    delete obj1.a.c;
+    console.log(obj.name);
+
+
+    //  es6 对函数扩展： !!剩余!!参数
+    //  ...rest 必须在参数的最后一个位置
+    function sum(a, b, ...rest){
+        console.log(rest);
+    }
+    sum(0,1,2,3,4,5)
+</script>

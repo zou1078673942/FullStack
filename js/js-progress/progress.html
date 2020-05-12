@@ -47,12 +47,12 @@
                     downx = touch.clientx;
                     btnLeft = parseInt(this.progressBtn.style.left || 0);
                 })
-                this.progressBtn.addEventListener('touchmove',)(event) => {
+                this.progressBtn.addEventListener('touchmove',(event) => {
                     const touch = event.touches[0];
                     const diffx = touch.clientx - downx;
                     let left = diffx + btnLeft
-                    this.progressBtn.style.left = `${left}px`
-                }
+                    this.progressBtn.style.left = `${left}px` 
+                })
             }
         }
         new Progress()

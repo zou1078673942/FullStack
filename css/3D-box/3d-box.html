@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D盒子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            position: relative;
+            perspective: 1000px;
+            z-index: 10;
+            margin-top: 100px;
+            margin-left: -68px;
+            text-align: center;
+            font-size: 0;
+            transform-style: preserve-3d;
+            opacity: 1;
+            transform: rotateY(-40deg) rotateX(-4deg) rotateZ(4deg);
+        }
+
+        .side {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: #0390A1;
+            border: 1px solid #3f515f;
+            display: inline-block;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+        }
+
+        .side-right {
+            transform: rotateY(90deg);
+            transform-origin: right;
+        }
+
+        .side-font {
+            transform: translateZ(120px);
+        }
+
+        .side-button {
+            transform-origin: bottom;
+            transform: rotateX(-90deg);
+        }
+
+        .side-left {
+            transform: rotateY(-90deg);
+            transform-origin: left;
+        }
+
+        .side-top {
+            transform: rotateX(90deg);
+            transform-origin: top;
+            background-color: transparent
+        }
+
+        .side-top .lid-left {
+            background-color: #0390A1;
+            transform-origin: left;
+            display: inline-block;
+            transform: rotateY(-120deg);
+            box-sizing: border-box;
+            width: 50%;
+            height: 120px;
+            border: 1px solid #3f515f;
+        }
+
+        .side-top .lid-right {
+            background-color: #0390A1;
+            transform-origin: right;
+            transform: rotateY(120deg);
+            display: inline-block;
+            box-sizing: border-box;
+            width: 50%;
+            height: 120px;
+            border: 1px solid #3f515f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="side side-top">
+            <div class="lid-left"></div>
+            <div class="lid-right"></div>
+        </div>
+        <div class="side side-button"></div>
+        <div class="side side-left"></div>
+        <div class="side side-right"></div>
+        <div class="side side-font"></div>
+        <div class="side side-back"></div>
+    </div>
+</body>
+
+</html>

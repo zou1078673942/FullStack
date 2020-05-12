@@ -1,0 +1,60 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 前端中的 ajax
+        // 使用 ajax 必须要先 new 一个 XMLHttpRequest
+        const xhr = new XMLHttpRequest();
+        // 例如向网易云的后端请求数据 
+        // open 有三个参数
+        // get：http规定的一个方法
+        // request: url 统一资源定位符
+        // true 异步   false 同步
+        xhr.open('get',
+        'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=jay',
+        false);
+        xhr.send();
+        // 拿到了资源
+        console.log(xhr.response);
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // button 通过 一个 ajax | http 请求，向后端请求数据
+    // 
+    const xhr = new XMLHttpRequest();
+    // 向网易云后端 url：统一资源定位符
+    // 1: 请求的方法 get: http 规定的一个方法
+    // 2：request url
+    // 3: true 异步 false 同步
+    xhr.open('get',
+    'http://neteasecloudmusicapi.zhaoboy.com/search?keywords=jay',
+    true);
+    // 发送请求 处理过程 耗费时间
+    // 异步(true)：不用在这等待， 拿到资源之后 再回调
+    // 同步(false)则需要等拿到资源之后才会继续执行下面的代码
+    // 大多数情况下 js 是单线程的，单线程也不会阻塞
+    xhr.onreadystatechange = function(){
+      console.log(xhr.readyState, xhr.response)
+    }
+    xhr.send();
+    // 拿到le
+    console.log(xhr.response);
+    console.log(123456)
+
+  </script>
+</body>
+</html>
