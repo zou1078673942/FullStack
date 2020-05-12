@@ -1,0 +1,15 @@
+{
+  "name": "music-download",
+  "version": "1.0.0",
+  "description": "这是一个命令行(cli)的小工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zjq",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0"
+  }
+}
