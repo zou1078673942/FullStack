@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import CommentInput from './CommentInput';
+import Comment from './Comment';
+
 
 class ComponentList extends Component {
     render() {
+        // console.log(this.props,'sss');
+        let { comments } = this.props;
         return (
             <div>
-                <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
-                <ul className="comment">
-                    <li></li>
-                </ul>
+                {comments.map((comment, i) => <Comment comment={comment} key={i} />)}
             </div>
         )
     }
-    handleSubmitComment(comment) {
-        console.log(comment)
-    }
+    
 }
 
 
