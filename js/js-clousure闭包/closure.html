@@ -1,0 +1,19 @@
+<script>
+    function test(){
+        var name = 0;
+        function test1(){
+            var name2 = 'gang'
+            // debugger;
+            return name ++;
+            // 访问另个一函数作用域内的 变量  || 闭包
+            // console.log(name);
+        }
+        return test1;
+    }
+    var fn = test(); 
+     //  存储在 cloure{ name: 0}中
+    // 演唱 name 作用域
+    console.log(fn());
+    console.log(fn());
+    console.log(fn());
+</script>

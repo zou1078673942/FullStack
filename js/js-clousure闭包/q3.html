@@ -1,0 +1,10 @@
+<script>
+    for (var i = 1; i <= 5; i++) {
+        //  将 i 作为函数的参数   让 i 互不影响
+        (function (i) {
+            setTimeout(function timer() {
+                console.log(i);
+            }, 1000);
+        })(i)    // 后面的 () 是调用   function(){}()  立即执行函数表达式 IIFE 
+    }
+</script>
