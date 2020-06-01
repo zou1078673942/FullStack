@@ -10,12 +10,12 @@ app.get('/',function(req,res){
     res.json(data);
 })
 // 设计一个 url 访问第一首歌
-// restful
+// restful  一切皆资源
 app.get('/posts/:id',function(req,res){
     // console.log(req.params.id);
     let id = req.params.id;
     let post = data.posts.filter(post => post.id ==id);
-    res.json(post.content)
+    res.json(post[0].content)
 })
-
+app.post("/posts",)
 app.listen(8081);
