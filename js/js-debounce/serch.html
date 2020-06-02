@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search">
+    <input type="text" id="search1">
+    <input type="text" id="search2">
+    <script>
+        const search = document.getElementById('search');
+        let timeout;
+        function handleSearch(event){
+            if (timeout){
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(()=>{
+                console.log(event.target.value)
+            },1000)
+            // 输入jay 这个词的时候
+            // 会进行三次请求 j ja jay
+            // 如何使得用户输入完 jay 之后再去请求
+            // 这就是防抖   
+            // 类似于    电梯
+        }
+        search.addEventListener('input',handleSearch)
+        
+        
+        
+        let handlemousemove = function(){
+            console.log('handleResize')
+        }
+        window.addEventListener('mousemove',handlemousemove)
+    </script>
+</body>
+</html>
