@@ -29,5 +29,4 @@ class CommentList extends Component {
   }
 }
 
-
 export default CommentList
