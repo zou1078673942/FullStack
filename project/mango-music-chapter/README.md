@@ -15,3 +15,13 @@
 
 - 根据界面 分析
     - 头尾不动 中间内容根据路由匹配（单页应用）
+
+- Loading 组件 在整个应用中是什么地位？
+  在哪个目录下创建？
+  containers
+  components 路由级别组件
+  Loading 服务于任何 listAPI 通用组件
+  1. 数据请求阶段， 显示loading
+  2. 数据到达之后， 隐藏loading
+  由父组件决定 显示/隐藏 
+  因此要给 loading 子组件传参

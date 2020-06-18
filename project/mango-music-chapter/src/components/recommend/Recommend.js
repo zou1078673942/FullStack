@@ -1,13 +1,19 @@
 import React from 'react';
 import './recommend.styl';
 import Swiper from 'swiper';
-import 'swiper/css/swiper.css'
+import 'swiper/css/swiper.css';
+import Loading from '../../common/loading/Loading';
+// 所有的数据请求都放到api目录下
+import {getNewAlbum} from '../../api/recommend';
+import Lazyload from 'react-lazyload';
 //  swiper
 class Recommend extends React.Component{
     state = {
+        newAlbums: [],
+        loading: true,
         sliderList: [{
             id:1,
-            picUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592323159415&di=46d97c283505f8585af94821cdc5a55d&imgtype=0&src=http%3A%2F%2Ft8.baidu.com%2Fit%2Fu%3D3571592872%2C3353494284%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D1200%26h%3D1290',
+            picUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592368705429&di=73d09705aff8ba54fd2701a59407b662&imgtype=0&src=http%3A%2F%2Ft8.baidu.com%2Fit%2Fu%3D1484500186%2C1503043093%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D1280%26h%3D853',
             linkUrl:'https://www.baidu.com'
         },{
             id:2,
@@ -30,8 +36,39 @@ class Recommend extends React.Component{
                 type: 'bullets',
             }
         })
+        // 获取最新专辑
+        getNewAlbum()
+            .then(res =>{
+                this.setState({
+                    loading: false,
+                    newAlbums: res
+                })
+            })
+        // setTimeout(() => {
+        //     this.setState({
+        //         loading: false
+        //     })
+        // },3000)
     }
     render(){
+        let albums = this.state.newAlbums.map(item => (
+            <div className="album-wrapper" key={item.id}>
+                <div className="left">
+                    <img src={item.img} alt={item.name} width='100%' height='100%'/>
+                </div>
+                <div className="right">
+                    <div className="album-name">
+                        {item.name}
+                    </div>
+                    <div className="singer-name">
+                        {item.singer}
+                    </div>
+                    <div className="public-name">
+                        {item.publicTime}
+                    </div>
+                </div>
+            </div>
+        ))
         return (
             <div className='musci-recommend'>
                 <div className="slider-container">
@@ -41,7 +78,9 @@ class Recommend extends React.Component{
                             return (
                                 <div className="swiper-slide" key={slider.id}>
                                     <a href={slider.linkUrl} className='slider-nav'>
+                                        <Lazyload height={60}>
                                         <img src={slider.picUrl} alt="" width='100%' height='100%'/>
+                                        </Lazyload>
                                     </a>
                                 </div>
                             )
@@ -50,6 +89,14 @@ class Recommend extends React.Component{
                     </div>
                     <div className="swiper-pagination"></div>
                 </div>
+
+                <div className="album-container">
+                    <h1 className="title">最新专辑</h1>
+                    <div className="album-list">
+                        {albums}
+                    </div>
+                </div>
+                {/* <Loading show={this.state.loading} title='正在加载...'/> */}
             </div>
         )
     }
