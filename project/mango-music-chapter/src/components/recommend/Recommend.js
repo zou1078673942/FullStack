@@ -1,9 +1,12 @@
 import React from 'react';
 import './recommend.styl'; // webpack
+import { Route } from 'react-router-dom';  // 子路由
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
+import Album from '@/components/album/Album';
 import Loading from '../../common/loading/Loading';
-
+import Scroll from '@/common/scroll/Scroll';
+import * as AlbumModel from '@/model/album';  // 一次性把album.js 所有的模块都引入
 // 应用中很多图片
 // import Lazyload from 'react-lazyload'; // 图片延迟加载
 // 1. 路由   
@@ -15,7 +18,6 @@ import Loading from '../../common/loading/Loading';
 // 所有的数据请求都放到api目录下
 import { getNewAlbum }  from '../../api/recommend';
 import LazyLoad, { forceCheck } from 'react-lazyload';
-import Scroll from '../../common/scroll/Scroll';
 
 // 1. 幻灯片， swiper
 // 2. 加入 swiper功能
@@ -45,6 +47,14 @@ class Recommend extends React.Component {
       }] // 幻灯片  没有必要去redux 
     }
   }
+
+  componentDidUpdate() {
+    //组件更新后，如果实例化了better-scroll并且需要刷新就调用refresh()函数
+    if (this.bScroll && this.props.refresh === true) {
+        this.bScroll.refresh();
+    }
+  }
+
   componentDidMount() {
     new Swiper(".slider-container", {
       loop: true,
@@ -62,9 +72,16 @@ class Recommend extends React.Component {
     getNewAlbum() /**promise */
       .then(res => {
         // console.log(res)
+        // 都端开发， mysql  define 表结构， 
+        // model  前端  定义结构
+        // 不回家model, 多加了一些业务代码在component   model 
+        let albumList = res.albumlib.data.list;
+
+        // model 
+        // albumList.sort()
         this.setState({
           loading: false,
-          newAlbums: res.albumlib.data.list
+          newAlbums: albumList
         }, () => {
           this.setState({
             refreshScroll: true
@@ -79,60 +96,173 @@ class Recommend extends React.Component {
   }
   render() {
     // 切页面
-    console.log(this.state.newAlbums);
-    let albums = this.state.newAlbums.map(item => (
-      <div className="album-wrapper" key={item.album_id}>
+    // console.log(this.state.newAlbums);
+    let { match } = this.props;
+    let albums = this.state.newAlbums.map(item => {
+      let album = AlbumModel.createAlbumByList(item);
+      // console.log(album);
+      return (
+      <div className="album-wrapper" 
+      key={album.id}
+      onClick={this.toAlbumDetail.bind(this, `${match.url + '/' + album.mId}`)}
+      >
         <div className="left">
-          <img src="https://qpic.y.qq.com/music_cover/Iia3lpoTl2hPXtBpjHk9QiaqUplwwdfZdf48EHsTO7PgO18LnQ74BPdQ/300?n=1" alt={item.album_name} width="100%" height="100%"/>
+          <LazyLoad height={60}>
+            <img src={album.img} alt={item.name} width="100%" height="100%"/>
+          </LazyLoad>
         </div>
         <div className="right">
           <div className="album-name">
-            {item.album_name}
+            {album.name}
           </div>
           <div className="singer-name">
-            {item.singers[0].singer_name}
+            {album.singer}
           </div>
           <div className="public-time">
-            {item.public_time}
+            {album.publicTime}
           </div>
         </div>
       </div>
-    ))
+      )
+    })
     return (
       <div className="music-recommend">
-        <Scroll 
+       
+          <div className="slider-container">
+            <div className="swiper-wrapper">
+              {
+                this.state.sliderList.map(slider => {
+                  return (
+                    <div className="swiper-slide" key={slider.id}>
+                      <a href={slider.linkUrl} className="slider-nav">
+                        <img src={slider.picUrl} alt="" width="100%" height="100%"/>
+                      </a>
+                    </div>
+                  );
+                })
+              }
+            </div>
+            <div className="swiper-pagination"></div>
+          </div>
+        <Scroll
           refresh={this.state.refreshScroll}
           onScroll={(e) => {
+            console.log(e);
             forceCheck();
           }}>
-        <div className="slider-container">
-          <div className="swiper-wrapper">
-            {
-              this.state.sliderList.map(slider => {
-                return (
-                  <div className="swiper-slide" key={slider.id}>
-                    <a href={slider.linkUrl} className="slider-nav">
-                        <img src={slider.picUrl} alt="" width="100%" height="100%"/>                    
-                    </a>
-                  </div>  
-                );
-              })
-            }
+          <div className="album-container">
+            <h1 className="title">最新专辑</h1>
+            <div className="album-list">
+              {albums}
+            </div>
           </div>
-          <div className="swiper-pagination"></div>
-        </div>
-        
-        <div className="album-container">
-          <h1 className="title">最新专辑</h1>
-          <div className="album-list">
-            {albums}
-          </div>
-        </div>
         </Scroll>
         <Loading show={this.state.loading} title="正在加载..."/>
+        <Route path={`${match.url + '/:id'}`} component={Album} />
       </div>
     )
+  }
+
+  toAlbumDetail(url) {
+    // console.log(url);
+    this.props.history.push({
+      pathname: url
+    })
   }
 }
 
 export default Recommend;
+import React from 'react';
+import './ranking.styl'; // webpack
+// import Loading from '../../common/loading/Loading';
+
+// import Loading from '../../common/loading/Loading';
+// alias 路径短连接 相对路径 路径别名  @
+import Loading from '@/common/loading/Loading';
+import  { getRankingList } from '@/api/ranking'; // 把请求数据的业务， 分离到api目录下  
+import LazyLoad, { forceCheck } from 'react-lazyload';
+import Scroll from '@/common/scroll/Scroll';
+// 组件的复用性 scroll
+// react 高级就业的练习生
+// console.log(RankAPI)
+// 排行榜 路由级别页面
+
+class Ranking extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loading: true,
+      refreshScroll: false,
+      rankingList: []
+    }
+  }
+  componentDidMount() {
+    getRankingList()
+      .then((res) => {
+        
+        console.log('获取排行榜....', res);
+        this.setState({
+          loading: false,
+          rankingList: res.data.topList
+          // state -> new State -> dom 响应式 -> 页面更新
+          // state.rankingList  -> dom 到页面上 -> scroll 
+          // refreshScroll: true
+          // setState callback , 状态更新并已经在界面同步后， 在执行callback
+        }, () => { // then
+          // setState 新的方法 异步
+          this.setState({ // ? 为什么？  考点
+            refreshScroll: true
+          })
+        })
+      })
+  }
+  render() {
+    let { match } = this.props;
+    return (
+      <div className="music-ranking"> 
+        <Scroll refresh={ this.state.refreshScroll }
+        onScroll={() => { forceCheck() }}>
+          <div className="ranking-list">
+            {
+              this.state.rankingList.map(ranking => {
+                return (
+                  <div className="ranking-wrapper" 
+                    key={ranking.id}>
+                    <div className="left">
+                      <LazyLoad height={100}>
+                        <img src={ranking.picUrl} alt={ranking.title}/>
+                      </LazyLoad>
+                    </div>
+                    <div className="right">
+                      <h1 className="ranking-title">
+                        {ranking.title}
+                      </h1>
+                      {
+                        ranking.songList.map((song, index) => {
+                          return (
+                            <div className="top-song" key={index}>
+                              <span className="index">{index + 1}</span>
+                              <span>{song.songname}</span>
+                              &nbsp;-&nbsp;
+                              <span className="song">{song.singername}</span>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </Scroll>
+        <Loading show={this.state.loading} title="正在加载排行榜..." />
+      </div>
+    )
+  }
+  toAlbumDetail (url) {
+    console.log(url);
+  }
+}
+
+export default Ranking;

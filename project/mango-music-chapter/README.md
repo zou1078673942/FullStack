@@ -1,5 +1,7 @@
 1. 做一个 react 项目   仿一个音乐类的
 2. 做一个可以上线的业务   思路 -> 架构 -> 技能点
+3. MVVM 模式 React    界面由数据驱动  前端设计模式
+   MVC  后端web开发模式
 
 - react 组件由 组件component 实例和一个css 文件 styl
   做一个 react 项目时， 不一定要用 creact-react-app(官方), 
