@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="index.js">
+
+    </script> -->
+    <script>
+        function getQuerString(){
+            let url = location.search;
+            let obj = new Object();
+            if (url.indexOf('?' != -1)) {
+                var str = url.substr(1);
+                
+            }
+            let strs = str.split('&');
+            for (let i=0; i < strs.length; i++){
+                obj[strs[i].split('=')[0]] = decodeURIComponent(strs[i].split('=')[1]);
+            }
+            return obj;
+        }
+        console.log(getQuerString());
+    </script>
+</body>
+</html>
