@@ -1,0 +1,18 @@
+<script>
+//  function Animal(){} -(prototype)> Animal.prototype -(constructor)> function Animal(){}
+//  非箭头函数都天然自带一个 prototype属性
+    function Animal(){
+        this.name = 'name'
+    }
+// prototype是一个对象 自带一个constructor
+    console.log(Animal.prototype)
+    Animal.prototype.say = function(){
+        console.log('say')
+    }
+    let ani = new Animal();
+    console.log(ani);
+    // __proto__: chrome的一个私有属性
+    // getPrototypeOf 获取原型对象 即 __proto__ 
+    console.log(Object.getPrototypeOf(ani))
+    // ani.__proto__ === Animal.prototype === Object.getPrototypeOf(ani)
+</script>
