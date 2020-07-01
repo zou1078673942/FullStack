@@ -4,3 +4,12 @@
 - 创意
     - viewport
         无论设备 固定尺寸
+    - button 
+        - html
+        - css
+        - dom变化
+            - 基本效果
+                定位 2sprite 显示
+            - js
+                隐藏的按钮显示出来
+                2sprite display: none;
