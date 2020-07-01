@@ -1,43 +1,72 @@
 import React from 'react';
-import {Map} from 'immutable';
+// lodash 集合
+// Map 转换的时候 只会对最外层的结构转换
+import { Map, fromJS } from 'immutable';
 import logo from './logo.svg';
 import './App.css';
-
-class App extends React.Component{
+// 原生的 js 结合 react 怎么写 不变的代码
+// 
+class App extends React.Component {
   state = {
     loginInfo: {
-      userName: null
+      userName: null,
+      hobby: []
     },
-    posts:[{content:1}],
-    userInfo:Map({
-      name: 'zou',
-      age:123,
-      skill:{
-        excellent:['react'],
-        practice:['node']
-      }
+    posts: [{ contet: 1 }],
+    userInfo: fromJS({
+      name: 'lihua',
+      skills: {
+        excellent: ['react'],
+        practice: ['node']
+      },
+      age: 123
     })
   }
-  componentDidMount(){
-    setTimeout(() =>{
-      const {posts} = this.state.posts.slice(0);
-      // 拷贝之后再操作
-      const newUserInfo = this.state.userInfo.set('name', 'lilei'); 
-      posts.push({content:2});
-      const loginInfo ={
+  componentDidMount() {
+    setTimeout(() => {
+      // const { posts } = this.state;
+      // 深拷贝：假如数据很大，耗费性能
+      const posts = this.state.posts.slice(0);
+      // setState 更新数据了，但是页面他不重新渲染
+      const newUserInfo = this.state.userInfo.set('name', 'lilei')
+      posts.push({ contet: 2 });
+      const loginInfo = {
         ...this.state.loginInfo,
-        userName: 'lo'
+        userName: '小李'
       }
+      let useInfo2 = {
+        name: '',
+        skill: {
+          excellent: 'js',
+          practice: {
+            a: 1
+          }
+        },
+        age: ''
+      }
+      // useInfo2.skill && (useInfo2.skill.excellent = 'react');
+      let excellentSkills = this.state.userInfo.getIn(['skills', 'excellent'])
+      // push 不是对原来这份数据进行更新
+      // 
+      let newexcellentSkills = excellentSkills.push('js')
+      // console.log(this.state.userInfo.getIn(['skills', 'excellent']));
+      const useInfo1 = this.state.userInfo.setIn(['skills', 'excellent'],
+       newexcellentSkills);
+      console.log(this.state.userInfo
+        .getIn(['skills', 'practice']) === useInfo1.getIn(['skills', 'practice']))
       this.setState({
-        posts
+        posts,
+        loginInfo,
+        userInfo: newUserInfo
       })
-    })
+    }, 3000)
   }
   render() {
-    const {posts} = this.state;
+    const { posts, userInfo } = this.state;
     return (
       <div>
-        {posts.length}
+        { posts.length }
+        name: { userInfo.get('name') }
       </div>
     )
   }

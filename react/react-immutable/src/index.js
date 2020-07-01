@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 let obj = {};
 let obj1 = obj;
-obj1.name = 123;
+obj1.name = 123;   // 副作用：会影响 obj 的内容
 ReactDOM.render(
   <React.StrictMode>
     <App />
