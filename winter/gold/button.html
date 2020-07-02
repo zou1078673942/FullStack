@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            /* font-size: 25px; */
+            text-align: center;
+            text-decoration: none;
+            font: 14px/100% Arial;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            border: solid 1px;
+            padding: .5em 2em .55em;
+            border-radius: .5em;
+            background: linear-gradient(to bottom, hsl(150, 95%, 54.1%), hsl(150, 95%, 84.1%));
+            border-color: hsl(150, 95%, 54.1%);
+
+            /* border-width: 5px; */
+            /* border-style: ridge; */
+
+            /* background-color: greenyellow;
+            background-color: #00ff00;
+            background-color: rgb(0, 255, 0);
+            background-color: rgba(0, 255, 0, .6); */
+            /* hsl 色相  饱和度  亮度 */
+            /* background-color: hsl(85, 50%, 50%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        123
+    </div>
+    <script>
+        const button = document.querySelector('.wrapper');
+        let hue = 150;
+        setInterval(() => {
+            button.style.borderColor = `hsl(${hue},95%,45%)`
+            button.style.background = `linear-gradient(to bottom, hsl(${hue},95%,54.1%), hsl(${hue},95%,84.1%))`
+            hue = (hue + 1) % 255;
+        }, 100)
+
+
+    </script>
+</body>
+
+</html>
