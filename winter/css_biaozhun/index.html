@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+    <script>
+        let result = [];
+        let arr = Object.keys(document.body.style);
+        for (let i = 0; i < arr.length; i++){
+            if(arr[i].indexOf('webkit') == -1){
+                result.push(arr[i]);
+            }
+        }
+        console.log(result)
+    </script>
+</body>
+
+</html>
