@@ -1,4 +1,5 @@
-function reduce(arr, reduceCallback, initialValue){
+Array.prototype.myReduce = function(reduceCallback, initialValue){
+    let arr = this;
     if(!Array.isArray(arr) || !arr.length || 
     typeof reduceCallback !== 'function'){
         return [];
@@ -11,6 +12,6 @@ function reduce(arr, reduceCallback, initialValue){
         return value;
     }
 }
-console.log(reduce([1,2,3,4],function(pre,cur,index,arr){
-    return pre + cur;
+console.log([1,2,3,4].myReduce((pre,cur,index,arr)=>{
+    return pre + cur 
 },5))
