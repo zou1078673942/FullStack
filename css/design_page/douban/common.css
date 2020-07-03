@@ -193,6 +193,35 @@ form{
     color: transparent;
     cursor: pointer;
 }
+#anony-reg-new {
+    margin-bottom: 25px;
+    background-size: contain;
+    background-position: -webkit-calc(50% - 305px) top;
+    background-position: calc(50% - 305px) top;
+    background-repeat: no-repeat;
+    background-color: #edf4ed;
+}
+.wrapper{
+    width: 950px;
+    margin: 0 auto;
+}
+#anony-reg-new .wrapper{
+    position: relative;
+    padding: 0 0 4px;
+    overflow: visible;
+    zoom: 1;
+}
+#anony-reg-new .wrapper:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: 0 -150px;
+}
 #anony-reg-new .app{
     position: absolute;
     height: 120px;
@@ -200,6 +229,9 @@ form{
     bottom: 0;
     margin: auto 0 auto 475px;
     *margin-top: 20px;
+}
+#anony-reg-new .wrapper .login, #anony-reg-new .wrapper .app {
+    z-index: 2;
 }
 #anony-reg-new .login{
     width: 300px;
@@ -209,8 +241,10 @@ form{
     *letter-spacing:normal;
     *word-spacing: -.43em;
 }
-#anony-reg-new .wrapper .login, #anony-reg-new .wrapper .app{
-    z-index: 2;
+#anony-reg-new .wrapper:after {
+    content: "\0020";
+    display: block;
+    clear: both;
 }
 #anony-reg-new .app-title {
     margin: 7px 0;
@@ -236,6 +270,11 @@ form{
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
+#anony-reg-new .app-slogan:after{
+    content:"";
+    display: inline-block;
+    width: 100%;
+}
 #anony-reg-new .lnk-app{
     display: inline-block;
     *display: inline;
@@ -246,7 +285,7 @@ form{
     border-radius: 2px;
     font-size: 12px;
     background: #00B51D;
-    color: #fff;
+    color: #FFF;
     line-height: 1;
 }
 #anony-reg-new .lnk-app:link, #anony-reg-new .lnk-app:visited, #anony-reg-new .lnk-app:hover, #anony-reg-new .lnk-app:active {
@@ -289,4 +328,7 @@ a img{
     background: #ffffff;
     line-height: 13px;
     white-space: nowrap;
+}
+#anony-reg-new .wrapper .app .app.qr .open{
+    display: block;
 }
