@@ -1,4 +1,6 @@
 import React,{Component,Fragment} from 'react';
+import Item from './Item'
+import axios from 'axios'
 
 class LitleSis extends Component{
     constructor(props){
@@ -8,39 +10,50 @@ class LitleSis extends Component{
             list:['基础按摩','精油推背']
         }
     }
+    componentDidMount(){
+        axios.post('')
+        .then((res) => {})
+    }
     render(){
         return (
             <Fragment>
                 <div>
-                    <input value={this.state.inputValue} 
-                    onChange={this.inputChange.bind(this)}/>
+                    <input 
+                    value={this.state.inputValue} 
+                    onChange={this.inputChange.bind(this)}
+                    ref = {(input) =>{this.input=input}}
+                    />
                     <button onClick={this.addList.bind(this)}>增加服务</button>
-                    <ul>
+                    <ul ref={(ul) =>{this.ul=ul}}>
                         {
                             this.state.list.map((item,index) => {
-                            return( 
-                                <li 
+                            return(
+                                <Item 
+                                    list={this.state.list}
+                                    content={item} 
                                     key={index+item}
-                                    onClick={this.deleteItem.bind(this,index)}>
-                                    {item}
-                                </li>
-                                )
+                                    index={index}
+                                    deleteItem={this.deleteItem.bind(this)}    
+                                />
+                            )
                             })
                         }
                     </ul>
                 </div>
             </Fragment>
         )
-    }
-    inputChange(e){
+    } 
+    inputChange(){
         this.setState({
-            inputValue: e.target.value
+            inputValue: this.input.value
         })
     }
-    addList(e){
+    addList(){
         this.setState({
             list:[...this.state.list,this.state.inputValue],
             inputValue:''
+        },() => {
+            console.log(this.ul.querySelectorAll('li').length)
         })
     }
     deleteItem(index){

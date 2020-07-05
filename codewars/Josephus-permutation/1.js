@@ -11,3 +11,4 @@ function josephus(items,k){
     return res
   }
   console.log(josephus(["C","o","d","e","W","a","r","s"],4))
+  document.querySelectorAll
