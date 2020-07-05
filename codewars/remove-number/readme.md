@@ -6,6 +6,7 @@
 3rd turn, ................................divisible by d-2.
 ith turn, ................................divisible by d-i+1.
 And so on. Until d-i+1 is decreased to 1 or you can not find a way to romove 1 digit from n and is divisible by d-i+1.
+
 - 给您两个正整数n和d（n由字符串fromat给出）。然后，我们正在播放Remove Number Game：
 第一回合，我们从中删除一个数字n，即所得的数字至少有一个non-zero数字并且可以被整除d。
 第2回合，我们从中删除一个数字n，即所得数字至少有一个non-zero数字并且可以被整除d-1。
