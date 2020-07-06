@@ -1,0 +1,1 @@
+let solve = s => s.match(/^(.*).*\1$/)[1].length;
