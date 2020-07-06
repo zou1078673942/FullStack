@@ -1,0 +1,18 @@
+<script>
+    class myArr{
+        static a = 1
+        static [Symbol.hasInstance](obj){return true}
+    }
+    let arr = new myArr()
+    // console.log(arr instanceof myArr)
+    let r = 'sss'
+    let obj1 = []
+    let obj = {
+        [r]:123,
+        'r':456 
+    }
+    console.log(obj instanceof myArr)
+    console.log(obj1 instanceof myArr)
+    console.log(arr instanceof myArr)
+    console.log(obj[r],obj['r'])
+</script>

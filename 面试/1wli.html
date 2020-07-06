@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li data-uid="1">
+            a
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li data-uid="2">b</li>
+        <li data-uid="3">c</li>
+    </ul>
+    <script>
+        //  动态获取 DOM 节点 实时的
+        // document.getElementsByClassName()  // 
+        // document.getElementsByName()
+        // document.getElementsByTagName()  
+        // const lis = document.querySelectorAll('ul li')
+        // for (let node of lis){
+        //     node.addEventListener('click',() => {
+        //         console.log(node)
+        //     })
+        // }
+        let ul = document.querySelector('ul')
+        ul.addEventListener('click',(e) => {
+            console.log(event.path)
+            const target = event.path.find(x => x.tagName === 'LI' && x.getAttribute('data-uid'))
+            console.log(target)
+            let nickanme = event.target.textContent;
+            let uid = e.target.getAttribute('data-uid')
+            console.log('click',e.target,uid,nickanme)
+        })
+    </script>
+</body>
+</html>

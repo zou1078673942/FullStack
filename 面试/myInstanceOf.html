@@ -1,0 +1,15 @@
+<script>
+    function myInstanceOf (obj,Constructor){
+        if(!Constructor[Symbol.hasInstance]) 
+            return false
+        let proto = obj.__proto__;
+        if(proto === null)
+            return false
+        if(proto === Constructor.prototype)
+            return true;
+        return myInstanceOf(proto,Constructor)
+    }   
+    console.log(myInstanceOf([],Array))
+    console.log(myInstanceOf([],Function))
+    console.log(myInstanceOf({},Object))
+</script>
