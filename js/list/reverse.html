@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <p>1</p>
+        <span>2</span>
+        <li>3</li>
+    </div>
+    <script>
+        const childs = document.querySelector('.wrapper')
+        const eles = childs.childNodes;
+        const nodes = [...eles]
+        childs.innerHTML = '';
+        for(let len = nodes.length-1;len>=0;len--){
+            console.log(nodes[len])
+            childs.appendChild(nodes[len])
+        }
+    </script>
+</body>
+</html>
