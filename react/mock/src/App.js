@@ -34,9 +34,8 @@ class Comment extends Component {
   state = {  }
   render() { 
       return ( 
-          <div>
-              {this.props.auther}
-          </div>
+          <sup>
+          </sup>
        );
   }
 }

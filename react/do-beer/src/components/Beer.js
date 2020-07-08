@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import slug from 'slugify';
 
 class Beer extends React.Component {
-  
+   
   static propTypes = {
     details: PropTypes.object.isRequired
   }
