@@ -58,14 +58,16 @@ const loadAndRefresh = (url) => (WrappedComponent) => {
         .then(res => {
           this.setState({
             msg:res.data.title,
-            auther:res.data.auther
+            auther:res.data.auther,
+            list:res.data.list
           })
         })
     }
     render (){
       const props = {
         msg: this.state.msg,
-        auther:this.state.auther
+        auther:this.state.auther,
+        list:this.state.list
       }
       return (
         <WrappedComponent {...props}/>

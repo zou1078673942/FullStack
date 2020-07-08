@@ -1,8 +1,5 @@
 function move_zeros(arrNum, isRight) {
-    function addZero(arr,num,isRight) {
-        if (isRight == null){
-            isRight = true
-        }
+    function addZero(arr,num,isRight = true) {
         if (!isRight){
             for(k=0;k<num;k++){
                 arr.unshift(0);
