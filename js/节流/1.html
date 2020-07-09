@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <script src="./1.js"></script>
+    <script>
+        const body = document.body;
+        function getUserInfo(){
+            console.log('发出请求')
+        }
+        // 时间戳   没有尾事件 有头事件
+        // body.onmousemove = throttled(getUserInfo,2000)
+        function throttled(func,wait){
+            let previous = 0
+            // console.log('外面')
+            return function () {
+                // console.log('内部')
+                let now = new Date().getTime()
+                if(now - previous > wait){
+                    func()
+                    previous = now
+                }
+            }
+        }
+        // 定时器实现   没有头事件 有尾事件
+        body.onmousemove = throttle2(getUserInfo,2000)
+        function throttled1(func,wait){
+            let timeOut = null
+            return function(){
+                if(!timeOut){
+                    timeOut = setTimeout(() =>{
+                        func()
+                        timeOut = null
+                    },wait)
+                    // console.log(timeOut)
+                }
+            }
+        }
+    </script>
+</body>
+</html>
