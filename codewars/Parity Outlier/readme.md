@@ -1,0 +1,3 @@
+https://www.codewars.com/kata/5526fc09a1bbd946250002dc/train/javascript
+- You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+- 给定一个数组(长度至少为3，但可能非常大)，其中包含整数。数组要么完全由奇数组成，要么完全由偶数组成，除了单个整数N。编写一个方法，以数组作为参数并返回这个“离群值”N。
