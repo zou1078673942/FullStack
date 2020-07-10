@@ -6,9 +6,17 @@ class Home extends Component {
         const action = sendAction()
         store.dispatch(action)
     }
+    componentDidMount(){
+        store.subscribe(() => {
+            this.setState([])
+        })
+    }
     render() { 
         return ( 
-            <button onClick={this.handleClick.bind(this)}>点我</button>
+            <div>
+                <button onClick={this.handleClick.bind(this)}>点我</button>
+                <div>{store.getState().value}</div>
+            </div>
         );
     }
 }
