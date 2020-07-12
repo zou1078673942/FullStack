@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
  
 export default Mock.mock('/data',{
-    'list|5-10':[{
+    'list|20-30':[{
        'title':'@title()' ,
        't1|1-2':1,
        'learned|0-20':1,

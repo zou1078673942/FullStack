@@ -33,15 +33,9 @@ class Lesson extends React.Component {
   }
   render() {
     const data = this.state.lesson
-    let { type1, type2 } = this.state, temp = {}, res = []
+    let { type1, type2 } = this.state
     // console.log(data,type1,type2,'--------------------')
-    res = data.filter((v)=>{
-      if(type1===0)
-        temp = v
-      else
-        temp = v.t1===type1? v : {}
-      return type2 === 0? temp : temp.t2 === type2
-    })
+    let res = data.filter(v => (type1===0||type1===v.t1)&&(type2===0||type2===v.t2))
     // console.log(res,'==========================')
     return (
       <div className='wrapper'>
