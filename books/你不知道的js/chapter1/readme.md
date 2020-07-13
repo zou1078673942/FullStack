@@ -32,3 +32,6 @@
     - 执行阶段 沿父函数AO向上查找直到window
     Scope = AO + [[Scope]]
     - AO上如果有与函数同名的属性，则会被此函数覆盖
+- LHS RHS (Left/Right Hand Search)
+    - LHS: 变量赋值或写入内存, 想象成讲文本文件保存到硬盘中
+    - RHs: 变量查找或从内容中读取, 想象成从硬盘中打开文本文件
