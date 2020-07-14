@@ -1,0 +1,21 @@
+.top{
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 1.75rem;
+    display: flex;
+    justify-content:space-between;
+    flex-direction:row;
+}
+.top p{
+    padding: 13px;
+    font-size: 0.7rem;
+    color: #56c45c;
+    font-style: normal;
+}
+.top .wrapper{
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content:center;
+}

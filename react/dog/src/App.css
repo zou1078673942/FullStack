@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 3.75px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Header-img{
+  height: 5rem;
+  width: 5rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Header-img img{
+  width: 100%;
+  height: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
+  /* position: relative; */
+  padding: 5rem  5rem;
+}
+.header{
+  position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  color: #34d49f;
+}
+.app-name{
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Header-img{
+  position: absolute;
+  right: 0; 
+  border: 2px solid #bfbfbf;
+  border-radius: 50%;
+}
+.Search-input{
+  /* margin-top: 2rem; */
+  height: 7rem;
+  width: 100%;
+  border-radius: 2.5rem;
+  background-color: #f4f4fa;
+  padding-left: 6rem;
+  color: #bfbfbf;
+  border: 0;
+}
+.Search{
+  position: relative;
+  display: flex;
+  align-items: center;
+ 
+}
+.Search-input{
+   font-size: 15px;
+}
+.Search-img{
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  left: 1rem;
+}
+.Search-img img{
+  width: 100%;
+  height: 100%;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+  font-size: 15px;
+}
+:-moz-placeholder {/* Firefox 18- */
+  color: #bfbfbf;
+}
+::-moz-placeholder{/* Firefox 19+ */
+ color: #bfbfbf;
+}
+:-ms-input-placeholder {
+  color: #bfbfbf;
+}
+.main{
+  margin-top: 5rem;
+  display: flex;
+  /* flex-direction: ; */
+  flex-flow: row wrap;
+  /* height: 60rem; */
+  
+}
+.main-box{
+  height: 40rem;
+  flex: 0 0 40%;
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttom{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 90rem;
+}
+.buttom-item {
+  flex-grow: 1;
+  flex: 1;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-img{
+  /* background-image: url(); */
+  width: 15rem;
+  height: 15rem;
+}
+.item-img img{
+  width: 100%;
+  height: 100%;
+}
+.item-name{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.mian-jia{
+  width: 15rem;
+  height: 15rem;
+}
+.mian-jia img{
+  width: 100%;
+  height: 100%;
+}
+.main-name{
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
+}
+.name-name{
+  font-size: 18px;
+  color: #1f0e0e;
+}
+.main-box{
+  border: 1px dotted #bfbfbf;
+}
+a {
+  text-decoration: none;
+  color: #bfbfbf;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

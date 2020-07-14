@@ -1,14 +1,10 @@
 import React from 'react';
-import Foot from './component/Foot'
-import Planets from './component/Planets'
-import Top from './component/Top'
+import Home from './component/index'
 
 function App() {
   return (
     <div className="App">
-      <Top/>
-      <Planets/>
-      <Foot/>
+      <Home/>
     </div>
   );
 }

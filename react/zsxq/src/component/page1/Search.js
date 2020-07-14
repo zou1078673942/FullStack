@@ -6,7 +6,7 @@ class Search extends Component {
     render() {
         return (
             <div className="search">
-                <input type="text"/>
+                <input type="text" placeholder="🔍搜索用户、星球或内容"/>
             </div>
         );
     }

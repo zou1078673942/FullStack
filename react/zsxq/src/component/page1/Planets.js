@@ -7,11 +7,11 @@ class Planets extends Component {
     state = {}
     render() {
         return (
-            <div>
+            <div className='content'>
                 <Search></Search>
                 <div className="planets">
-                    planets
-            </div>
+                    p;anets
+                </div>
             </div>
         );
     }
