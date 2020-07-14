@@ -7,7 +7,7 @@ class Main extends Component {
         this.state = {
             lists: []
         }
-    }
+    } 
     componentDidMount() {
         if(localStorage.getItem('state')){
             const state = JSON.parse(localStorage.getItem('state'))

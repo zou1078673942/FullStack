@@ -5,5 +5,24 @@
     height: 19rem;
 }
 .content .planets{
-    margin-top: 800px;
+    /* margin-top: 800px; */
+    display: flex;
+    padding: 15px;
+}
+.content .planets .planet-box{
+    border: 2px dotted grey;
+    width: 4rem;
+    height: 5rem;
+    border-radius: 15px;
+}
+.content .planets .planet-box .planet-add{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.content .planets .planet-box .build{
+    font-size: 0.4rem;
 }

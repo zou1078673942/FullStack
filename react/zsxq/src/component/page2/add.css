@@ -1,0 +1,15 @@
+.add-wrapper .add{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction:row;
+}
+.add-wrapper .add .add-top{
+    padding: 22px;
+}
+.add-wrapper .add-img{
+    top: 2rem;
+}
