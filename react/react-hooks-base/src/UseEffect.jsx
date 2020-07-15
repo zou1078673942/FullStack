@@ -1,13 +1,15 @@
 import React,{ useEffect, useState, useMemo} from 'react';
 import { useCallback } from 'react';
 
+let set = new Set();
 function DemoUseEffect(){
-    const [inputValue, setVal] = useState('11')
+    const [inputValue, setVal] = useState(['1'])
     const [list, setList] = useState('')
     // const [val, setVal] = ['', () => {}]
-    const arr = [11,22]
-    const val = useMemo(() => arr)
-    console.log(val === arr)
+    // const arr = [11,22]
+    const val = useMemo(() => [1,2],[])
+    set.add(val)
+    // console.log(val === arr)
     const handleChange = useCallback((event) => {
         setVal(event.target.value);
     })

@@ -1,15 +1,30 @@
 .add-wrapper .add{
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 10rem;
     height: 1.75rem;
     display: flex;
     justify-content: space-between;
     flex-direction:row;
 }
 .add-wrapper .add .add-top{
-    padding: 22px;
+    padding: 0.2rem;
+    font-size: 0.5rem;
 }
 .add-wrapper .add-img{
-    top: 2rem;
+    position: relative;
+    margin-top: 3rem;
+    margin-left: 3.2rem;
+    /* margin-right: 50%; */
+}
+.new-input{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+.new-input .new-title{
+    margin: 0.5rem;
 }

@@ -5,19 +5,20 @@ import './add.css'
 class Add extends Component {
     state = {  }
     render() { 
-        return ( 
+        return (
             <div className="add-wrapper">
-                <Link to='/' className='link add'>
+                <Link to='/' className='link add'> 
                     <span className="back add-top">取消</span>
-                    <span></span>
                     <span className='next add-top'>下一步</span>
                 </Link>
                 <img src={require('../icon/bg.png')} className="add-img"/>
-                <input type="text" name="" id="title"/>
-                <input type="text" name="" id="author"/>
+                <div className="new-input">
+                    <input type="text" className="new-title" id="title"/>
+                    <input type="text" className="new-author" id="author"/>
+                </div>
             </div>
-        );
+        )
     }
 }
- 
+
 export default Add;
