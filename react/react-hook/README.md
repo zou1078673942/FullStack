@@ -20,7 +20,7 @@
 
 4. 状态组件的编写顺序
     - 数据 Provider store
-    
+    - 
 
 5. redux
     - 简单的 redux 项目结构
@@ -46,3 +46,24 @@
         2. 创建组件
         3. 状态组件, 无状态组件重用方法
     - reducer
+        1. action 的标准做法
+            - 返回{ type: payload: }更新reducer的状态
+            - 组件里的事件、生命周期等功能  主要和数据、状态打交道, 归为Action来做
+            - 所有的 action 都用  export function,   在组件中引入需要的 actions
+            - bindActionCreators 
+                actions 变成本地调用函数
+            - useMemo 缓存函数
+            - connct中第二个参数返回 action
+        2. action 
+            - from 北京     to 南昌
+            - 两个action思想切换
+            - 修改的本质 redux
+    - from to 的复盘
+        1. redux 编程思想  
+            - reducers 纯函数 返回状态及接受状态的修改
+                那一刻只有一个状态与之相对应: switch
+            - actions actionsTypes 
+                是更新reducer的工具 diapatch一个action
+                from to 都有独立的reducer函数和action
+            - exchagneFromTo()
+                dispatch getState

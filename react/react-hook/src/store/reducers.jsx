@@ -8,10 +8,10 @@ export default {
         const { type, payload } = action
         switch(type) {
             case ACTION_SET_FROM:
-                    return payload;
+                return payload;
             default:
-        }
-        return state;
+                return state;
+        } 
     },
     to (state = '上海', action) {
         const { type, payload } = action
@@ -19,7 +19,7 @@ export default {
             case ACTION_SET_TO:
                 return payload;
             default:
+                return state;
         }
-        return state;
     }
 }
