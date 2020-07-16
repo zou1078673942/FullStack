@@ -17,6 +17,10 @@
                     }
                     currentNode = currentNode[c]
                 }
+                if(!('$' in currentNode)){
+                    currentNode['$'] = 0
+                }
+                currentNode['$']++
             }
         }
         let t = new Trie()
