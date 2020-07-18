@@ -20,10 +20,10 @@ export function fetchCityData (){
         dispatch(isLoadingCityData(true))
         fetch('/rest/cities')
             .then(res => {
-                dispatch(isLoadingCityData(false))
                 res.json()
             })
             .then(cityData => {
+                dispatch(isLoadingCityData(false))
                 dispatch(setCityDate(cityData))
             })
     }

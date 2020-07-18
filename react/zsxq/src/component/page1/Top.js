@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Top extends Component {
     state = {}
     render() {
-        return (
+        return ( 
             <div className="top">
                 <div className='wrapper'>
                     <span className="iconfont"></span>

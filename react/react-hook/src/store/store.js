@@ -2,7 +2,7 @@ import {createStore, combineReducers , applyMiddleware } from 'redux'
 import reducers from './reducers'
 import thunk from 'redux-thunk'
  
-export default createStore(
+export default createStore( 
     combineReducers(reducers),
     {
         from:'北京',
