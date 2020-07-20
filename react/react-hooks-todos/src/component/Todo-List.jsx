@@ -19,7 +19,7 @@ const TodoList = ({ todes, onToggleFinished }) => {
                     renderItem = {({ id, text, finished}, idx) => {
                         const itemClasses = classNames({
                             "list-item": true,
-                            "list-item_finished": finished
+                            "list-item__finished": finished
                         })
                         return (
                             <Item className="list-item list-item_finished">
