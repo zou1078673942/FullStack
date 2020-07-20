@@ -9,12 +9,18 @@
 
 <body>
     <script>
-        function fn (a,str){
-            eval(str)
-            console.log(a,b)
+        var a = 0
+        function fn1() {
+            console.log(a)
         }
-        var b = 1
-        fn(0,'b=2')
+        function fn2() {
+            var a = 1
+            function fn3() {
+                fn1()
+            }
+            fn3()
+        }
+        fn2()
     </script>
 </body>
 
