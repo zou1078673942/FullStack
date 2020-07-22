@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.App{
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+dd{
+  height: 50px;
+}
+dt{
+  height: 36px;
+  position: sticky;
+  /* left: 0; */
+  top: 0;
+}
+.App .left{
+  width: 50px;
+  overflow: hidden;
+}
+.App .right {
+  flex: 1;
+  height: 100vh;
+  overflow: scroll;
+}
+.active{
+  color: red;
+}
