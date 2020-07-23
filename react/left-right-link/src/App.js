@@ -53,6 +53,7 @@ function App() {
     })
   }
   const navs = Object.keys(data)
+  console.log(navs)
   const ref = useRef()
   useEffect(() => {
     const right = ref.current;
@@ -63,7 +64,7 @@ function App() {
       ranges.push([base, newH])
       base = newH
     }
-    console.log(ranges)
+    // console.log(ranges)
     const onScroll = () => {
       const scrollTop = right.scrollTop
       const index = ranges.findIndex(ranges => scrollTop >= ranges[0] && scrollTop < ranges[1])

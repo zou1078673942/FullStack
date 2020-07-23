@@ -2,7 +2,7 @@ import styled from "styled-components";
 // 专门解决切页面， 不用过于组件化的语法 
 export const Top = styled.div`
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: space-between;
   padding: 5px 10px;
   background: #d44439;
