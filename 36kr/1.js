@@ -1,12 +1,10 @@
-var test = (function() {
-    var num = 0
-    return () => {
-        return num++
+let name = 'global';
+function getName() {
+    let name = 'local';
+    return function() {
+        return name;
     }
-}())
-
-for (var i = 0; i < 10; i++) {
-    test()
 }
-
-console.log(test())
+let getPrivate = getName();
+console.log(name);
+console.log(getPrivate());

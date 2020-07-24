@@ -1,6 +1,6 @@
 import React, { useEffect, useState, memo } from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from './store/actionCreators';
+import * as actionTypes from './store/actionCreators'; 
 import { getBannersRequest } from '../../api/request';
 function Recommend(props) {
   const { recommendList, banners, enterLoading } = props

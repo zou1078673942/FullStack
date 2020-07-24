@@ -1,0 +1,4 @@
+- tap  点
+- press  长按
+- pan  拖
+- flick  快速地拖
