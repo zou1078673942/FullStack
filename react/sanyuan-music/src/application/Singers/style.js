@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const NavContainer = style.div`
+export const NavContainer = styled.div`
     box-sizing: border-box;
     position: fixed;
     top: 95px;

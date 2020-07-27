@@ -58,6 +58,7 @@ function App() {
   useEffect(() => {
     const right = ref.current;
     const tabs = right.querySelectorAll('[data-rtab]')
+    console.log(right,tabs)
     for (let tab of tabs){
       let h = tab.getBoundingClientRect().height;
       let newH = base + h
@@ -66,6 +67,7 @@ function App() {
     }
     // console.log(ranges)
     const onScroll = () => {
+      console.log('----------')
       const scrollTop = right.scrollTop
       const index = ranges.findIndex(ranges => scrollTop >= ranges[0] && scrollTop < ranges[1])
       setActiveIndex(index)

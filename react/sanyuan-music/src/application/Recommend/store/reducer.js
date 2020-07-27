@@ -3,7 +3,7 @@ import * as actionTypes from './constants';
 const defaultState = {
   recommendList: [],
   banners: [],
-  enterLoading: true
+  enterLoading: true 
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -14,6 +14,6 @@ export default (state = defaultState, action) => {
     case actionTypes.CHANGE_ENTER_LOADING:
       return { ...state, enterLoading: action.data }
     default:
-      return state
+      return state 
   }
 }

@@ -8,7 +8,7 @@ function Recommend(props) {
   useEffect(() => {
     if (!recommendList.length) {
       getRecommendListDataDispatch();
-    }
+    } 
     if(!banners.length){
       getBannersDataDispatch()
     }
