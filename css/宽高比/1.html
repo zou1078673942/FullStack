@@ -1,0 +1,21 @@
+<style>
+    .ration{
+        width: 100%;
+        outline: 1px solid royalblue;
+        height: 0;
+        padding-top: calc(100% * 9 / 16);
+        position: relative;
+    }
+    .ration > div{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+<div class="ration">
+    <div>content</div>
+</div>
+<script>
+    const ration = document.getElementsByClassName('ration')
+    console.log(ration,'========')
+</script>
