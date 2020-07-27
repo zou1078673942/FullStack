@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #el{
+            width: 30px;
+            height: 30px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="el"></div>
+    <button id="pause">pause</button>
+    <script>
+        const el = document.getElementById('el')
+        const pause = document.getElementById('pause')
+        const {x,y} = el.getBoundingClientRect()
+        let nowX = x,nowY = y,move = true
+
+        function tick () {
+            console.log(nowX,nowY)
+            if (nowX>=400||nowY>=400) {
+                nowX = 0, nowY = 0
+            }
+            nowX ++ 
+            nowY ++ 
+            el.style.transform = `translate3d(${nowX}px,${nowY}px,0)`
+            move && requestAnimationFrame(tick)
+        }
+
+        let refId = requestAnimationFrame(tick)
+
+        pause.addEventListener('click',() => {
+            move = !move
+            // cancelAnimationFrame(refId)
+            pause.innerHTML = move?'pause':'resume'
+            requestAnimationFrame(tick)
+        })
+    </script>
+</body>
+</html>
