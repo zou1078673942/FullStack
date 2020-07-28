@@ -18,7 +18,15 @@ export const getRecommendListRequest = () => {
 // 每个函数都是返回一个promise 
 
 // api 与actions的分离点
-// axiosInstance.get   返回是Promise 
+// axiosInstance.get   返回是Promise
+
+// 前后端合作要素
+// 1. 接口地址
+// url /top/artists 请求 RESTFUL 资源的暴露
+// 2. 传参
+// 按照后端要求传参
+// 3. 接口文档 ？？
+// 后端提供， 前端根据接口文档传参
 
 //首页广告 
 export const getBannersRequest = () => {

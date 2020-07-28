@@ -1,0 +1,21 @@
+<script>
+    function repeat(func, times, wait) {
+        function * fun() {
+            for (let i = 0; i < times; i++) {
+                yield 'hello world'
+            }
+            return
+        }
+        let iterator = fun()
+        function autorun (obj) {
+            let {value,done} = obj.next()
+            if(done) return
+            func(value)
+            setTimeout(() => {
+                autorun(iterator)
+            },wait)
+        }
+        autorun(iterator)
+    }
+    const repeatFunc = repeat(console.log, 4, 500)
+</script>

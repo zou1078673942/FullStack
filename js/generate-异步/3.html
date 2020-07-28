@@ -1,0 +1,27 @@
+<script>
+    // sleep ()
+    function sleep (time) {
+        let pre = Date.now()
+        while(Date.now() - pre < time){}
+    }
+    function sleep2 (time) {
+        return new Promise ((resolve, reject) => {
+            setTimeout(() => {
+                resolve(time)
+            },time)
+        })
+    }
+    console.log(1)
+    sleep(1000)
+    console.log(2)
+    ;(async () => {
+        await sleep2(1000)
+        console.log(3)
+    })()
+    function * foo () {
+        const a = yield sleep2(1000)
+        console.log(a)
+        const b = yield sleep2(1000)
+        console.log(b)
+    }
+</script>

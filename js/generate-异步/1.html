@@ -1,0 +1,21 @@
+<script>
+    function * foo () {
+        console.log('start')
+        let b = 0
+        console.log(b)
+        b = yield 1
+        console.log(b)
+        b = yield 2
+        console.log(b)
+        b = yield 3
+        console.log(b)
+        console.log(yield 4)
+        console.log('end')
+    }
+    let iterator = foo ()
+    console.log(iterator.next(11))
+    console.log(iterator.next(12))
+    console.log(iterator.next(13))
+    console.log(iterator.next(14))
+    console.log(iterator.next(15))
+</script>
