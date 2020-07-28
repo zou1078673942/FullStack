@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef, memo } from 'react';
-import { PropTypes } from 'prop-types'
-import Scroll from '../scroll';
-import styled from 'styled-components'
-import style from '../../assets/global-style'
+import React, { useState, useRef, useEffect, memo } from 'react';
+import Scroll from '../scroll/index'
+import styled from 'styled-components';
+import style from '../../assets/global-style';
+import { PropTypes } from 'prop-types';
+
 
 const List = styled.div`
   display: flex;
@@ -17,7 +18,9 @@ const List = styled.div`
     color: grey;
     font-size: ${style["font-size-m"]};
     vertical-align: middle;
-}`
+  }
+`
+
 const ListItem = styled.span`
   flex: 0 0 auto;
   font-size: ${style["font-size-m"]};
@@ -31,58 +34,55 @@ const ListItem = styled.span`
 `
 
 function Horizen(props) {
-    const [refreshCategoryScroll, setRefreshCategoryScroll] = useState(false);
-    const Category = useRef(null);
-    const { title, list, oldVal } = props
-    const { handleClick } = props;
-    const clickHandle = (item) => {
-        handleClick(item.key);
-    }
-    useEffect(() => {
-        let categoryDOM = Category.current;
-        let tagElems = categoryDOM.querySelectorAll("span");
-        let totalWidth = 0;
-        Array.from(tagElems).forEach(ele => {
-            totalWidth += ele.offsetWidth;
-        });
-        totalWidth += 2;
-        categoryDOM.style.width = `${totalWidth}px`;
-        setRefreshCategoryScroll(true);
-    }, [refreshCategoryScroll]);
+  const [refreshCategoryScroll, setRefreshCategoryScroll] = useState(false);
+  const Category = useRef(null);
+  const { list, oldVal, title } = props;
+  const { handleClick } = props;
 
-    return (
-        <Scroll direction={"horizental"} refresh={true}>
-            <div ref={Category}>
-                <List>
-                    <span>{title}</span>
-                    {
-                        list.map((item) => {
-                            return (
-                                <ListItem
-                                    key={item.key}
-                                    className={oldVal === item.key ? 'selected' : ''}
-                                    onClick={() => clickHandle(item)}>
-                                    {item.name}
-                                </ListItem>
-                            )
-                        })
-                    }
-                </List>
-            </div>
-        </Scroll>
-    )
+  useEffect(() => {
+    let categoryDOM = Category.current;
+    let tagElems = categoryDOM.querySelectorAll("span");
+    let totalWidth = 0;
+    Array.from(tagElems).forEach(ele => {
+      totalWidth += ele.offsetWidth;
+    });
+    totalWidth += 2;
+    categoryDOM.style.width = `${totalWidth}px`;
+    setRefreshCategoryScroll(true);
+  }, [refreshCategoryScroll]);
+
+  const clickHandle = (item) => {
+    handleClick(item.key);
+  }
+
+  return (
+    <Scroll direction={"horizental"} refresh={true}>
+      <div ref={Category}>
+        <List>
+          <span>{title}</span>
+          {
+            list.map((item) => {
+              return (
+                <ListItem key={item.key} className={oldVal === item.key ? 'selected' : ''} onClick={() => clickHandle(item)}>
+                  {item.name}
+                </ListItem>
+              )
+            })
+          }
+        </List>
+      </div>
+    </Scroll>  
+  )
 }
 
 Horizen.defaultProps = {
-    title: "",
-    list: [],
-    handleClick: null
-}
+  list: [],
+  handleClick: null
+};
 
 Horizen.propTypes = {
-    title: PropTypes.string,
-    list: PropTypes.array,
-    handleClick: PropTypes.func
-}
+  list: PropTypes.array,
+  handleClick: PropTypes.func
+};
 
-export default memo(Horizen)
+export default memo(Horizen);

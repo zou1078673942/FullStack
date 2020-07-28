@@ -3,14 +3,15 @@
 // 二级路由 
 // /path Component 放在相应的地方<Route />
 // 嵌套
-import React,{ lazy, Suspense, Component} from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Redirect } from 'react-router-dom';
-// import Recommend from '../application/Recommend/';
 import BlankLayout from '../layouts/BlankLayout';
 import HomeLayout from '../layouts/HomeLayout';
+// import Recommend from '../application/Recommend/';
+const RecommendComponent = lazy(() => import("../application/Recommend/"))
+const SingersComponent = lazy(() => import("../application/Singers/"))
+const SingerComponent = lazy(() => import("./../application/Singer/"));
 
-const RecommendComponent = lazy(() => import("../application/Recommend"))
-const SingersComponent = lazy(() => import("../application/Singers"))
 const SuspenseComponent = Component => props => {
   return (
     <Suspense fallback={null}>
@@ -29,18 +30,23 @@ export default [{
       routes: [
         {
           path: '/',
-          exact: true,  
-          render: () => <Redirect to={"/recommend"} /> 
+          exact: true,
+          render: () => <Redirect to={"/recommend"} />
         },
         {
           path: '/recommend',
-          component: SuspenseComponent(RecommendComponent),
-          key:'recommend'
+          component: SuspenseComponent(RecommendComponent)
         },
         {
           path: '/singers',
           component: SuspenseComponent(SingersComponent),
-          key:'singers'
+          key: "singers",
+          routes: [
+            {
+              path: "/singers/:id",
+              component: SuspenseComponent(SingerComponent)
+            }
+          ]
         },
         // {
         //   path: '/rank',

@@ -1,44 +1,116 @@
-import React, { useState, useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { connect } from 'react-redux';
-import { NavContainer } from './style'
-import { categoryTypes, alphaTypes } from '../../api/config'
-import Horizen from '../../baseUI/horizen-item/index'
+import { NavContainer, ListContainer, List, ListItem, } from './style';
+import { categoryTypes, alphaTypes } from '../../api/config';
+import Horizen from '../../baseUI/horizen-item/index';
+import { changeCategory, changeAlpha, getHotSingerList, refreshMoreHotSingerList, changeListOffset } from './store/actionCreators'; 
+import  LazyLoad, {forceCheck} from 'react-lazyload';
+import Scroll from "../../baseUI/scroll/index";
+import { renderRoutes } from 'react-router-config';
 
 function Singers (props) {
-    const { category, alpha } = props
-    const handleUpdateAlpha = () => {
+  const scrollRef = useRef(null);
+  const { category, alpha, singerList, pageCount } = props;
+  console.log(singerList);
+  const { updateCategory, updateAlpha, getHotSinger, pullUpRefresh, refreshMoreHotSingerList, pullDownRefresh } = props;
+  
+  const enterDetail = (id)  => {
+    props.history.push(`/singers/${id}`);
+  };
 
-    }
-    const handleUpdateCategory = () => {
-        
-    }
+  const renderSingerList = () => {
+    const {singerList} = props;
     return (
-        <div>
-            <NavContainer>
-                <Horizen
-                title="分类(默认热门):" 
-                list={categoryTypes}
-                handleClick={(v) => handleUpdateCategory(v)}
-                oldValue={category}
-                />
-                <Horizen 
-                title="首字母:" 
-                list={alphaTypes}
-                handleClick={(v) => handleUpdateAlpha(v)}
-                oldValue={alpha}
-                />
-            </NavContainer>
-        </div>
+      <List>
+      {
+        singerList.map((item, index) => {
+          return (
+            <ListItem key={item.accountId+""+index} onClick={() => enterDetail(item.id)}>
+                <div className="img_wrapper">
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="music"/>}>
+                    <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="music"/>
+                  </LazyLoad>
+                </div>
+                <span className="name">{item.name}</span>
+              </ListItem>
+          )
+        })
+      }
+      </List>  
     )
+  };
+
+  const handlePullUp = () => {
+    pullUpRefresh(category === '', pageCount);
+  };
+
+  const handlePullDown = () => {
+    pullDownRefresh(category === '', pageCount);
+  }
+
+  const handleUpdateAlpha = (newVal) => {
+    if(alpha === newVal) return;
+    updateAlpha(newVal);
+  }
+  const handleUpdateCategory = (newVal) => {
+    if(category === newVal) return;
+    updateCategory(newVal);
+  }
+
+  useEffect(() => {
+    if(!singerList.length && !category && !alpha) {
+      getHotSinger();
+    }
+  }, []);
+  return (
+    <div>
+      <NavContainer>
+        <Horizen title="分类（默认热门）:" list={categoryTypes} handleClick={(v) => handleUpdateCategory(v) }  oldVal={category}/>
+        <Horizen title="首字母:" list={alphaTypes} handleClick={(v) => handleUpdateAlpha(v) } oldVal={alpha}/>
+      </NavContainer>
+      <ListContainer play={2}>
+        <Scroll 
+            onScroll={forceCheck} 
+            pullUp={ handlePullUp }
+            pullDown={ handlePullDown }
+            ref={ scrollRef }>
+          { renderSingerList() }
+        </Scroll>
+      </ListContainer>
+      { renderRoutes(props.route.routes) }
+    </div>
+  )
 }
+
 
 const mapStateToProps = (state) => ({
-    category: state.singers.category,
-    alpha: state.singers.alpha
+  alpha: state.singers.alpha,
+  category: state.singers.category,
+  singerList: state.singers.singerList,
+  pageCount: state.singers.pageCount
 })
-
-const mapDispatchToProps = (dispatch) => {
-    return {}
+const matDispatchToProps = (dispatch) => {
+  return {
+    updateAlpha(newVal) {
+      dispatch(changeAlpha(newVal));
+    },
+    updateCategory(newVal) {
+      dispatch(changeCategory(newVal));
+    },
+    getHotSinger() {
+      dispatch(getHotSingerList());
+    },
+    pullUpRefresh(hot, count) {
+      if(hot){
+        dispatch(refreshMoreHotSingerList());
+      }
+    },
+    pullDownRefresh(category, alpha) {
+      dispatch(changeListOffset(0));
+      if(category === '' && alpha === ''){
+        dispatch(getHotSingerList());
+      }
+    }
+  }
 }
-
-export default connect(mapStateToProps,mapDispatchToProps)(memo(Singers))
+export default connect(mapStateToProps, matDispatchToProps)(memo(Singers));

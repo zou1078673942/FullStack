@@ -3,4 +3,4 @@ import { renderRoutes } from "react-router-config";
 
 const Layout = ({ route }) => <>{renderRoutes(route.routes)}</>
 
-export default Layout; 
+export default Layout;
