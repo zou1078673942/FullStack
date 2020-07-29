@@ -1,0 +1,11 @@
+<script>
+    const b = 2
+    let obj = {
+        b: 1,
+        a: () => {
+            console.log(this.b)
+        },
+    }
+    console.log(b)
+    obj.a()
+</script>

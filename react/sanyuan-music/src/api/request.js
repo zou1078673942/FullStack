@@ -9,7 +9,7 @@ export const getRecommendListRequest = () => {
           title: 'aaaaaa'
         }]
       })
-    }, 1000)
+    }, 1000) 
   })
 }
 
@@ -47,4 +47,8 @@ export const getHotSingerListRequest = count => {
 
 export const getSingerInfoRequest = id => {
   return axiosInstance.get(`/artists?id=${id}`);
+};
+
+export const getHotKeyWordsRequest = () => {
+  return axiosInstance.get(`/search/hot`);
 };

@@ -11,6 +11,7 @@ import HomeLayout from '../layouts/HomeLayout';
 const RecommendComponent = lazy(() => import("../application/Recommend/"))
 const SingersComponent = lazy(() => import("../application/Singers/"))
 const SingerComponent = lazy(() => import("./../application/Singer/"));
+const SearchComponent = lazy(() => import("./../application/Search/"));
 
 const SuspenseComponent = Component => props => {
   return (
@@ -48,6 +49,12 @@ export default [{
             }
           ]
         },
+        {
+          path: "/search",
+          exact: true,
+          key: "search",
+          component: SuspenseComponent(SearchComponent)
+        }
         // {
         //   path: '/rank',
         //   component: RankComponent

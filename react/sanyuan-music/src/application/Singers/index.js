@@ -11,7 +11,7 @@ import { renderRoutes } from 'react-router-config';
 function Singers (props) {
   const scrollRef = useRef(null);
   const { category, alpha, singerList, pageCount } = props;
-  console.log(singerList);
+  // console.log(singerList);
   const { updateCategory, updateAlpha, getHotSinger, pullUpRefresh, refreshMoreHotSingerList, pullDownRefresh } = props;
   
   const enterDetail = (id)  => {
