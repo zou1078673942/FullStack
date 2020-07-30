@@ -24,7 +24,7 @@ class Planet extends Component {
                 newObj = [...JSON.parse(localStorage.getItem('info')), obj]
             } else {
                 newObj = [obj];
-            }  
+            }
             localStorage.setItem('info', 
             JSON.stringify(newObj));
     }
