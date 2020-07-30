@@ -1,7 +1,7 @@
 // 路由的本质是什么？
 // 路由级别的页面
 // 二级路由 
-// /path Component 放在相应的地方<Route />
+// /path Component 放在相应的地方<Route /> 
 // 嵌套
 import React, { lazy, Suspense } from 'react';
 import { Redirect } from 'react-router-dom';

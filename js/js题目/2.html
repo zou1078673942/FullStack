@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes first {
+            0% {
+                border-color: black;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                transform: rotate(0)
+            }
+
+            100% {
+                border-color: black;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                transform: rotate(180deg)
+            }
+        }
+        @keyframes blank {
+            0%{
+                background-color: #fff;
+            }
+            99%{
+                background-color: #fff;
+            }
+            100%{
+                background-color: transparent;
+            }
+        }
+        @keyframes second {
+            0% {
+                border: 10px solid black;
+                border-bottom-color: transparent;
+                border-right-color: transparent;
+                transform: translateY(-120px);
+                z-index: 2;
+            }
+
+            100% {
+                border: 10px solid black;
+                border-bottom-color: transparent;
+                border-right-color: transparent;
+                transform: translateY(-120px) rotate(180deg);
+                z-index: 2;
+            }
+        }
+
+        .loading {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .wrapper {
+            width: 120px;
+            height: 120px;
+            transform: rotate(-45deg);
+        }
+        .blank{
+            animation: blank 5s linear 1s 1 forwards;
+            position: absolute;
+            width: 60px;
+            height: 100vh;
+            z-index: 3;
+            background-color: #fff;
+        }
+        .left {
+            animation: first 5s linear 6s 1 forwards;
+            border: 10px solid transparent;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            z-index: 1;
+        }
+
+        .right {
+            animation: second 5s linear 1s 1 forwards;
+            border: 10px solid black;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            transform: translateY(-120px);
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blank"></div>
+    <div class="wrapper">
+        <div class="loading left"></div>
+        <div class="loading right"></div>
+    </div>
+</body>
+
+</html>
