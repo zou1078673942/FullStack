@@ -9,7 +9,7 @@ function App() {
             <button onClick={() => {
                 notification.open({
                     title: 'this is a title'
-                })
+                })                                      
             }}>open</button>
             <button onClick={()=>{
                 notification.close()
