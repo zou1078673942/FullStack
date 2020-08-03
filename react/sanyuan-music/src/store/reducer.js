@@ -7,4 +7,4 @@ export default combineReducers({
   recommend: recommendReducer,
   singers: singersReducer,
   singerInfo: singerInfoReducer,
-})
+}) 
