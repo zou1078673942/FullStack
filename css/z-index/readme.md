@@ -1,6 +1,8 @@
 ## 一个网页是沿着一条 Z 轴排开的 (图层)
 
 ## 层叠上下文形成
+- 默认规则: 定位 > 非定位 
+            后来的覆盖在上面
 - 条件
     1. position 不为 static
     2. filter transform perspective 不为 none
