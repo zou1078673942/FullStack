@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            text-align: center;
+            border: 2px solid black;
+            background-color: #ea5;
+            vertical-align: top;
+        }
+        .one {
+            /* transform: translate(0,0); */
+            position: relative;
+            margin-left: 10px;
+            z-index: 2;
+        }
+
+        .two {
+            z-index: -1;
+            margin-top: -30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box one">one</div>
+    <div class="box two">two</div>
+</body>
+</html>

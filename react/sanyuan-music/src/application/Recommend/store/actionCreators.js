@@ -4,7 +4,7 @@ import { getRecommendListRequest, getBannersRequest } from '../../../api/request
 export const changeRecommendList = (data) => ({
   type: actionTypes.CHANGE_RECOMMEND_LIST,
   data: data
-});
+}); 
 
 export const changeEnterLoading = (data) => ({
   type: actionTypes.CHANGE_ENTER_LOADING,

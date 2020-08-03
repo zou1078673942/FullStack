@@ -7,14 +7,14 @@ const defaultState = {
   enterLoading: true
 }
 export default (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case actionTypes.CHANGE_BANNER:
-      return { ...state, banners: action.data };
+      return { ...state, banners: action.data }
     case actionTypes.CHANGE_RECOMMEND_LIST:
-      return { ...state, recommendList: action.data };
+      return { ...state, recommendList: action.data }
     case actionTypes.CHANGE_ENTER_LOADING:
-      return {...state, enterLoading: action.data}
+      return { ...state, enterLoading: action.data }
     default:
-        return state
+      return state
   }
 }

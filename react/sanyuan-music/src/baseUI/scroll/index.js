@@ -18,7 +18,7 @@ const PullUpLoading = styled.div`
   bottom: 5px;
   width: 60px;
   height: 60px;
-  margin: auto;
+  margin: auto; 
   z-index: 100;
 `
 
