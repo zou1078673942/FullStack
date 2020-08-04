@@ -1,0 +1,75 @@
+<style>
+    div {
+        background-color: grey;
+        display: inline-block;
+        margin: 30px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        ;
+    }
+
+    .green.light {
+        background-color: green;
+    }
+
+    .yellow.light {
+        background-color: yellow;
+    }
+
+    .red.light {
+        background-color: red;
+    }
+</style>
+
+
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="green"></div>
+<!-- <button class="red-button">red</button>
+<button class="yellow-button">yellow</button>
+<button class="green-button">green</button> -->
+
+
+<!-- <button id="next" onclick="go();">开始</button> -->
+
+<script>
+    function red() {
+        change()
+        const red = document.querySelector('.red')
+        red.classList.add('light')
+    }
+    function yellow() {
+        change()
+        const yellow = document.querySelector('.yellow')
+        yellow.classList.add('light')
+    }
+    function green() {
+        change()
+        const green = document.querySelector('.green')
+        green.classList.add('light')
+    }
+    function change() {
+        const light = document.querySelector('.light')
+        light?.classList.remove('light')
+    }
+
+    function cicle(times) {
+        const fun = (times) => {
+            if (times == 0) return
+            red()
+            setTimeout(() => {
+                yellow()
+                setTimeout(() => {
+                    green()
+                    setTimeout(() => {
+                        red()
+                        return fun(--times)
+                    }, 3000)
+                }, 2000)
+            }, 1000)
+        }
+        fun(times)
+    }
+    cicle(5)
+</script>
