@@ -1,0 +1,70 @@
+<style>
+    div {
+        background-color: grey;
+        display: inline-block;
+        margin: 30px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        ;
+    }
+
+    .green.light {
+        background-color: green;
+    }
+
+    .yellow.light {
+        background-color: yellow;
+    }
+
+    .red.light {
+        background-color: red;
+    }
+</style>
+
+
+<div class="red"></div>
+<div class="yellow"></div>
+<div class="green"></div>
+<script>
+    function red() {
+        change()
+        const red = document.querySelector('.red')
+        red.classList.add('light')
+    }
+    function yellow() {
+        change()
+        const yellow = document.querySelector('.yellow')
+        yellow.classList.add('light')
+    }
+    function green() {
+        change()
+        const green = document.querySelector('.green')
+        green.classList.add('light')
+    }
+    function change() {
+        const light = document.querySelector('.light')
+        light?.classList.remove('light')
+    }
+    function sleep(time) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, time)
+        })
+    }
+    async function loop2() {
+        for (let i = 0; i < 5; i++) {
+            await onceLight() // ??
+        }
+    }
+    async function onceLight() {
+        red();
+        await sleep(1000);    // Promsie.then
+        yellow();
+        await sleep(2000);
+        green()
+        await sleep(3000);
+    }
+    loop2()
+</script>
