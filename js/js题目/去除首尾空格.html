@@ -1,0 +1,11 @@
+<script>
+    // 去除首位空格
+    const trim = (str) => {
+        return str.replace(/^(\s)+(.+)(\s)+$/, '$2')
+    }
+    function trim2(str) {
+        return str.match(/\S+(\s+?\S+)*/)[0]
+    }
+    console.log(trim2(' 32 2 23 23  '))
+    console.log(trim('  33 58 '))
+</script>
