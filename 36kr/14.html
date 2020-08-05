@@ -1,0 +1,14 @@
+<script>
+    function foo (...args) {
+        console.log(args)
+        let str = 'str:'
+        str += args[0][0]
+        str += args[1]
+        str += args[0][1]
+        str += args[2]
+        str += args[0][2]
+        console.log(str)
+    }
+    foo`i am ${11} you are ${22}z22 `
+    // foo`f`
+</script>

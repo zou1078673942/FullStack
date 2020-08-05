@@ -3,6 +3,8 @@ import pullToRefresh from './pullDown'
 import './App.css';
 import styled, { css } from 'styled-components'
 
+// 原生js支持的标签模板
+const { init } = pullToRefresh()
 const Button = styled.a`
   /* This renders the buttons above... Edit me! */
   display: inline-block;
@@ -23,7 +25,6 @@ const Button = styled.a`
 `
 // css in js
 
-const { init } = pullToRefresh()
 function App() {
   const [isPrimary, setIsPrimary] = useState(false)
   const contentRef = useRef();

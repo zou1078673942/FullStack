@@ -9,7 +9,7 @@ export default function webPullToRefresh() {
     loadingFunction: () => new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve()
-      }, 3000)
+      }, 3000) 
     }), //返回promise
     resistance: 2.5             //阻尼
   }

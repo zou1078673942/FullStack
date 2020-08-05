@@ -1,0 +1,56 @@
+<script>
+
+    var tree2 = {
+        name: "page.js",
+        require: [
+            {
+                name: "A.js",
+                require: [
+                    {
+                        name: "B.js",
+                        require: [
+                            {
+                                name: "C.js"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "D.js",
+                require: [
+                    {
+                        name: "C.js"
+                    },
+                    {
+                        name: "E.js"
+                    }
+                ]
+            }
+        ]
+    };
+
+    const resolve = tree => {
+        let res = []
+        const foo = node => {
+            const promise = new Promise ((res,rej) => {
+                node?.require?.forEach((e, i) => foo(e))
+                node.name&&res(node.name)
+            })
+            .then(name => res.push(name))
+        }
+        foo(tree)
+        return res
+    }
+    const resolve1 = tree => {
+        let res = []
+        const foo = node => {
+            node?.require?.forEach((e, i) => foo(e))
+            res.push(node.name)
+        }
+        foo(tree)
+        return res
+    }
+    console.log(resolve1(tree2)); 
+//   ["C.js", "B.js", "A.js", "C.js", "E.js", "D.js", "page.js"]
+</script>
