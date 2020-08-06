@@ -22,3 +22,11 @@
         - 标签节点
         - 非标签节点 递归
         - 文本   退出条件
+
+5. 你在做项目碰到了什么问题
+- 接口文档  api
+- 互相交流  极客
+- useRef 解决闭包的副作用
+
+6. 数据在hooks中怎么走
+- useState -> context 轻量 | reducer 重量 | useReducer | mobx
