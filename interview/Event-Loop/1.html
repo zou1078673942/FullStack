@@ -1,0 +1,15 @@
+<script>
+    setTimeout(() => {
+        console.log(1)
+        Promise.resolve(6).then(console.log)
+    })
+    new Promise((res, rej) => {
+        console.log(2) // 生成 promise 是同步的
+        setTimeout(() => console.log(5))
+        res(3)
+    })
+    .then(r => console.log(r))
+    .then(r => console.log(r))
+    console.log(4)
+    // 2 4 3 undefind 1 5  
+</script>
