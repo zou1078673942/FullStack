@@ -1,0 +1,11 @@
+<script>
+    function resolve(url, id) {
+        let stack = []
+        for (let i of id.split('/')) {
+            i != '' && i != '.' && i != '..' && stack.push(i)
+            i == '..' && stack.pop()
+        }
+        return url + '/' + stack.join('/')
+    }
+    console.log(resolve('http://www.baidu.com', 'a/b/c'))
+</script>

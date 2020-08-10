@@ -1,0 +1,11 @@
+<script>
+    var simplifyPath = function (path) {
+        let stack = []
+        for (let i of path.split('/')){
+            i!='' && i!='.' && i!='..' && stack.push(i)
+            i=='..' && stack.pop()
+        }
+        return '/'+stack.join('/')
+    };
+    console.log(simplifyPath('/a/./b/../../c/'))
+</script>

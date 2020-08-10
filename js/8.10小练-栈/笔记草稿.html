@@ -1,0 +1,14 @@
+<script>
+    const note = str => {
+        let stack = [],bol = true
+        for(let i of str.split('')){
+            console.log(stack.join(''))
+            if(i === '<') {stack.pop(); continue}
+            if(i === '(') bol = false
+            bol && stack.push(i)
+            if(i === ')') bol = true
+        }
+        return stack.join('')
+    }
+    console.log(note('Corona(Trump)USA<<<Virus'))
+</script>
