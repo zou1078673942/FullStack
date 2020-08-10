@@ -4,14 +4,14 @@ import ReactDOM from 'react-dom'
 // import Smile from './Smile'
 import {MyComponent1,MyComponent2,MyComponent3,MyComponent4,MyComponent5,MyComponent6} from './demo'
 // import { MyComponent } from './demo3'
-import { MyContextProvider,MyComponent } from './demo4'
+// import { MyContextProvider,MyComponent } from './demo4'
 
 function App () {
     return (
         <div className="App">
-            <MyContextProvider/>
-            <MyComponent/>
-            {/* <MyComponent5/> */}
+            {/* <MyContextProvider/> */}
+            {/* <MyComponent/> */}
+            <MyComponent6/>
             {/* <Smile/>             */}
             {/* <MyComponent1/>
             <MyComponent2/>

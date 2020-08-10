@@ -123,6 +123,16 @@ export const MyComponent5 = () => {
     )
 }
 
+export const MyComponent6 = () => {
+    const [visible,setVisible] = useState(false)
+    return (
+        <>
+            {visible && <MyChildComponent1 visible={visible}/>}
+            <button onClick={() => setVisible(!visible)}>Toggle Child component visibility:</button>
+        </>
+    )
+}
+
 const MyChildComponent1 = () => {
     const [filter, setFilter] = useState('')
     const [userCollection, setUserCollection] = useState([])
@@ -136,7 +146,6 @@ const MyChildComponent1 = () => {
     const setSafeUserCollection = userCollection => mountedRef.current && setUserCollection(userCollection)
 
     useEffect (() => {
-        console.log('aa')
         setTimeout(() => {
             fetch(`https://jsonplaceholder.typicode.com/users?name_like=${filter}`)
             .then(res => res.json())
@@ -153,16 +162,6 @@ const MyChildComponent1 = () => {
                     )
                 }
             </ul>
-        </>
-    )
-}
-
-export const MyComponent6 = () => {
-    const [visible,setVisible] = useState(false)
-    return (
-        <>
-            {visible && <MyChildComponent1 visible={visible}/>}
-            <button onClick={() => setVisible(!visible)}>Toggle Child component visibility:</button>
         </>
     )
 }
