@@ -1,0 +1,5 @@
+- setTimeout
+- Promise
+- 请求
+- addevent
+- 页面
