@@ -6,5 +6,5 @@ import { reducer as singerInfoReducer } from "../application/Singer/store/index"
 export default combineReducers({
   recommend: recommendReducer,
   singers: singersReducer,
-  singerInfo: singerInfoReducer,
+  singerInfo: singerInfoReducer, 
 }) 
