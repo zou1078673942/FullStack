@@ -1,0 +1,7 @@
+.container{
+  /* rpx 任何屏幕 都是 750rpx */
+  padding: 375rpx 15rpx;
+}
+.flex-container{
+  display: flex;
+}

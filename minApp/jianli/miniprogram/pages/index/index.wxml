@@ -1,0 +1,5 @@
+<view class="container">
+	<vant-button type="primary" block class="big-btn">
+		{{name}}
+	</vant-button>
+</view>

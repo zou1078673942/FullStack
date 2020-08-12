@@ -1,0 +1,15 @@
+{
+  "name": "jianli",
+  "version": "1.0.0",
+  "description": "1. MVVM React JSX WXML 2. setData  setState  onLoad 3. taro  4. 前端框架  antd => vant(有赞) 5. 全栈  云数据库  云文件处理 6. 能上线",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.4.3"
+  }
+}
