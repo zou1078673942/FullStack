@@ -1,5 +1,5 @@
 <view class="container">
-	<vant-button type="primary" block class="big-btn">
-		{{name}}
+	<vant-button type="primary" block class="big-btn" bindtap="upload">
+		上传图片
 	</vant-button>
 </view>

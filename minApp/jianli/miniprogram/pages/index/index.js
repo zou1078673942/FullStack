@@ -1,5 +1,7 @@
 //index.js
 const app = getApp()
+const db = wx.cloud.database()
+const photos = db.collection('photos')
 
 Page({
   data: {
@@ -9,6 +11,39 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: ''
+  },
+
+  upload(){
+    console.log('上传图片。。。。')
+    wx.chooseImage({
+      // 最多选择多少张
+      count: 9,
+      sizeType: ['original','compressed'],
+      sourceType: ['album','camera'],
+      success (res) {
+        // console.log(res)
+        for(let filePath of res.tempFilePaths){
+          wx.cloud.uploadFile({
+            cloudPath: Math.floor(Math.random()*1000).toString() + '.png',
+            filePath: filePath,
+            success: res => {
+              // console.log(res)
+              photos.add({
+                data:{
+                  image: res.fileID
+                }
+              })
+              .then(res => {
+                wx.showToast({
+                  title: '上传成功',
+                  icon: 'success'
+                })
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
   onLoad: function () {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+        .alert-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .alert-enter-active {
+            opacity: 1;
+            /* transform：scale(1) */
+            transform: translateX(0);
+            transition: opacity 300ms, transform 300ms;
+        }
+
+        .alert-exit {
+            opacity: 1;
+        }
+
+        .alert-exit-active {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        const box = document.querySelector('.box')
+        box.classList.add('alert-enter')
+        box.classList.add('alert-enter-active')
+    </script>
+</body>
+
+</html>
