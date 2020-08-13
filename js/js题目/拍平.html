@@ -1,0 +1,11 @@
+<script>
+    let a = [1,[2,[3,[4,[5],4],3],2],1]  // => [1,2,3,4,5]
+    // a.push(a)
+    function flat () {
+        let res = []
+        const help = arr => arr.forEach(e => Array.isArray(e)?help(e):res.push(e))
+        help(a)
+        return res
+    }
+    console.log(flat(a))
+</script>
