@@ -1,0 +1,16 @@
+<!-- 小程序先抄react setState setData -->
+<view class="wrapper">
+<!-- 再抄vue for 指令 -->
+  <view wx:for="{{ articles }}" wx:for-item="group" wx:key="{{ group.date }}" class="group">
+        <view class="group-bar">
+            <view class="group-title {{ group.formateDate === '今日' ? 'on' : ''}}">{{ group.date }}</view>
+        </view>
+        <view class="group-content">
+            <!--repeat-->
+            <view wx:for="{{ group.items }}" wx:for-item="item" wx:key="{{ item.id }}" data-item="{{ item }}" bindtap="showDetail" class="group-content-item">
+                <view class="group-content-item-desc ellipsis-multi-line ellipsis-line-3">{{ item.title }}</view>
+                <image mode="aspectFill" class="group-content-item-img" src="{{ item.pic }}" ></image>
+            </view>
+        </view>
+    </view>
+</view>
