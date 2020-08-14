@@ -1,0 +1,25 @@
+<script>
+    let listeners = {
+
+    }
+    const price1 = () => console.log('price1')
+    const price2 = () => console.log('price2')
+    const blog1 = () => console.log('blog1')
+    const blog2 = () => console.log('blog2')
+    // {
+    //     'price'=[price1,price2],
+    //     'blog'=[blog1,blog2]
+    // }
+    // listeners 结构 和上面一样
+    const on = (name,fn) => listeners[name]?listeners[name].push(fn):listeners[name]=[fn]
+
+    const emit = name => listeners[name]?.map(i => i())
+
+    const off = (name,fn) => listeners[name] = listeners[name].filter(listen => listen != fn)
+
+    on('price',price1)
+    on('price',price2)
+    off('price',price2)
+    emit('price')
+    console.log(listeners)
+</script>
