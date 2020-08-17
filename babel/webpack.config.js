@@ -17,6 +17,19 @@ const config = {
         test: /(.js|.jsx)$/,
         use: ['babel-loader'],
         exclude: /node_modules/
+      },{
+        test: /\.css$/i,
+        // css-loader 专门处理 css 语法
+        // style-loader 将 css 内容插入到 html 标签中
+        use: ['style-loader', {
+          loader:'css-loader',
+          options: {
+            modules: {
+              mode: 'local',
+              localIdentName:'[hash:base64:5]'
+            }
+          }
+        }],
       }
     ]
   },
