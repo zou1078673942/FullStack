@@ -1,0 +1,3 @@
+- react-route 核心组件 就是 Link 借助了 pushState 让 url 变化，页面部分刷新
+- Route 看地址栏里的 url 和 path 属性匹配不匹配 匹配则显示
+- 最外层的 BrowserRouter setState 让我们页面刷新

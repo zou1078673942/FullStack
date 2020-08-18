@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='push'>push</button>
+    <script>
+        const push = document.getElementById('push')
+        let i = 0 
+
+        window.addEventListener('popstate',() => {
+            console.log('change')
+        })
+
+        push.onclick = function () {
+            const state = { 'page_id': i, 'user_id': 5 }
+            const title = 'title'
+            const url = `/push${i++}`
+            console.log(history)
+            history.pushState(state, title, url)
+            console.log(history.length)
+            history.replaceState(null,null,'/history.html')
+            console.log(history.length)
+        }
+    </script>
+</body>
+
+</html>
