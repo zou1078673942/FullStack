@@ -1142,6 +1142,11 @@ create-egg@^2.0.1:
   dependencies:
     egg-init "^2"
 
+create-next-app@^9.5.2:
+  version "9.5.2"
+  resolved "https://registry.npm.taobao.org/create-next-app/download/create-next-app-9.5.2.tgz#a1e1d9a21d5425307aeb62c7bf0db2116262f574"
+  integrity sha1-oeHZoh1UJTB662LHvw2yEWJi9XQ=
+
 cron-parser@^2.4.4:
   version "2.16.3"
   resolved "https://registry.npm.taobao.org/cron-parser/download/cron-parser-2.16.3.tgz?cache=0&sync_timestamp=1597000251915&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcron-parser%2Fdownload%2Fcron-parser-2.16.3.tgz#acb8e405eed1733aac542fdf604cb7c1daf0204a"
