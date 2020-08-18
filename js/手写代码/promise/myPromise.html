@@ -1,0 +1,21 @@
+<script>
+    function MyPromise (fn) {
+        this.value = undefined
+        let self = this
+        function res (value) {
+            self.value = value
+        }
+        function rej () {}
+        // fn(res, rej)
+    }
+    MyPromise.prototype.then = function (onFulfilled, onRejected){
+        onFulfilled(this.value)
+    }
+    new MyPromise ((res,rej) => {
+        res(1)
+        // setTimeout(() => {
+        //     res(1)
+        // },200)
+    })
+    .then((res) => console.log(res,'-----'))
+</script>

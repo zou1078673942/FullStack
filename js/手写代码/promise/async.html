@@ -1,0 +1,45 @@
+<script>
+    const PENDING = Symbol('PENDING');
+    const FULFILLED = Symbol('FULFILLED');
+    const REJECTED = Symbol('REJECTED');
+    function MyPromise(fn) {
+        this.value = undefined;
+        this.onFulfilled = [];
+        this.status = PENDING;
+        let self = this;
+        function resolve(value) {
+            self.value = value;
+            self.status = FULFILLED;    
+            // console.log(value);
+            self.onFulfilled.forEach(fn => {
+                fn(value);
+            });
+        }
+        function reject() {}
+        fn(resolve, reject);
+    }
+    MyPromise.prototype.then = function (onFulfilled, onRejected) {
+        if (this.status === FULFILLED) onFulfilled(this.value)
+        else if (this.status === PENDING) {
+            return new MyPromise ((resolve,reject) => {
+                this.onFulfilled.push(() => {
+                    let x = onFulfilled()
+                    if (x instanceof MyPromise) {
+                        x.then(resolve, reject)
+                    }  
+                });
+            })
+        } else {}
+    }
+    new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1)
+        }, 200);
+    })
+        .then((resolve) => {
+            console.log(++resolve,'111');
+        }, () => {})
+        .then((resolve) => {
+            console.log(++resolve,'222')
+        })
+</script>

@@ -1,0 +1,11 @@
+<script>
+    function foo(cb1) {
+      function fn(a) {
+        console.log(a);
+      }
+      cb1(fn)
+    }
+    foo((cb2) => {
+      cb2(3333)
+    })
+  </script>

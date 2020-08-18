@@ -1,0 +1,6 @@
+<script>
+    new Promise ((res, rej) => {
+        res(1)
+    })
+    .then((res) => {console.log(res)}, (rej) => {console.log('失败的时候执行')})
+</script>
