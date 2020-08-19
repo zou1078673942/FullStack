@@ -1,0 +1,12 @@
+<script>
+    const xhr = new XMLHttpRequest()
+    xhr.open()
+    xhr.onreadystatechange = () => {}
+    xhr.send()
+
+    const _XMLHttpRequest = window.XMLHttpRequest;
+    window.XMLHttpRequest = function XMLHttpRequest () {
+        const _xhr = new _XMLHttpRequest()
+        return _xhr;
+    }
+</script>

@@ -3,7 +3,7 @@ import React from 'react'
 const context = React.createContext()
 
 class BrowserRouter extends React.Component {
-  state = { 
+  state = {
     pathname: '/'
   }
   update = (pathinfo) => {
@@ -15,7 +15,7 @@ class BrowserRouter extends React.Component {
     return (
       <context.Provider value={
         {
-          pathname: this.state.pathname, 
+          pathname: this.state.pathname,
           update: this.update
         }
       }>

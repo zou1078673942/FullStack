@@ -1,0 +1,25 @@
+<script>
+    let value = [1,2,3]
+    let list = [{
+        v: 0,
+        children:[{
+            v: 0,
+            children:[{
+                v:0
+            }]
+        }]
+    }]
+    const tree = (list) => {
+        let i = 0
+        const fun = (list) => {
+            console.log(list)
+            list.forEach(item => {
+                item.v = value[i++]
+                item.children && fun(item.children)
+            })
+        }
+        fun(list)
+    }
+    tree(list)
+    console.log(list)
+</script>
