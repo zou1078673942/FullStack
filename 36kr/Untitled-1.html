@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		let value = [1, 2, 3]
+		let researchOptions = [{
+				label: '股票',
+				value: '1',
+				children: [{
+						label: '指数',
+						value: '2',
+						children: [{
+							label: '宽基指数',
+							value: '3',
+						}],
+					},
+					{
+						label: '指数1',
+						value: '11',
+						children: [{
+							label: '宽基指数1',
+							value: '11',
+						}, ],
+					},
+				],
+			},
+			{
+				label: '股票',
+				value: '2',
+				children: [{
+						label: '指数',
+						value: '1',
+						children: [{
+							label: '宽基指数',
+							value: '1',
+						}, ],
+					},
+					{
+						label: '指数1',
+						value: '11',
+						children: [{
+							label: '宽基指数1',
+							value: '11',
+						}, ],
+					},
+				],
+			},
+		];
+		//[1,1,1]输出
+		let out = [{
+			label: '股票',
+			value: '1',
+			children: [{
+				label: '指数',
+				value: '1',
+				children: [{
+					label: '宽基指数',
+					value: '1',
+				}, ],
+			}]
+		}]
+		let res = researchOptions,i=0
+		const foo = (list,num) => {
+			list.forEach((item,i) => {
+				item.value != num && list.splice(i,1)
+			})
+			list[0].children && foo(list[0].children,value[++i])
+		}
+		foo(res,value[i])
+		console.log(res)
+	</script>
+</body>
+
+</html>
