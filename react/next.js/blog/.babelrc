@@ -1,0 +1,10 @@
+{
+    "presets": ["next/babel"], // next.js的总配置文件
+    "plugins": [
+        [
+            "import",{
+                "libraryName":"antd"
+            }
+        ]
+    ]
+}
