@@ -1,0 +1,27 @@
+<script>
+    // 函数即对象
+    // 构造函数  没生成实例就不执行
+    function Foo() {
+        Foo.a = function () {
+            console.log(1)
+        }
+        // new 过程   自身属性
+        this.a = function () {
+            console.log(2)
+        }
+    }
+    // 在Foo上挂载原型方法 
+    Foo.prototype.a = function () {
+        console.log(3)
+    }
+    // 挂载直接方法 
+    Foo.a = function () {
+        console.log(4)
+    }
+
+    Foo.a();  // 4 
+    let obj = new Foo();
+    console.log(obj)
+    obj.a();  // 2
+    Foo.a();  // 1
+</script>

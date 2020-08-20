@@ -1,0 +1,16 @@
+<script>
+    // 从面向对象聊到继承
+    const person = {
+        inHuman: false,
+        printIntroduction: function () {
+            console.log(`My name is ${this.name}. Am I human?${this.inHuman}`)
+        }
+    }
+    // 最简单的继承
+    const me = Object.create(null)
+    me.name = '17'
+    me.isHuman = true
+    console.log(me)
+    // me.printIntroduction()
+    // console.log(me.__proto__,me,me.__proto__.__proto__ === Object.prototype)
+</script>
