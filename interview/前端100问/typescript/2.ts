@@ -1,4 +1,5 @@
-const getUserInfo = (user:{name:string,age:number}):string =>{
+ 
+ const getUserInfo = (user:{name:string,age:number}):string =>{
     return `name:${user.name},age:${user.age}`
 }
 getUserInfo({name:'17',age:18})
