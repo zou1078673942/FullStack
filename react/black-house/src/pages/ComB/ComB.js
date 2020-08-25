@@ -1,15 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux'
-class ComB extends React.Component{
-
-    render(){
-        return (
-            <div>
-                {this.props.value}
-            </div>
-        )
-    }
+import { useEffect } from 'react';
+function ComB (props) {
+    console.log(props.value)
+    const {value} = props
+    useEffect(() => {
+        console.log('--')
+    },[value])
+    return (
+        <div>
+            {value}
+        </div>
+    )
 }
+
 const mapStateToProps = (state) => {
     return state
 }
