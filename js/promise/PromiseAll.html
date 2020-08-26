@@ -1,0 +1,41 @@
+<script>
+    const p1 = () => {
+        return new Promise((res,rej) => {
+            setTimeout(() => {
+                console.log(1)
+                res(1)
+            },1000)
+        })
+    }
+    const p2 = () => {
+        return new Promise((res,rej) => {
+            setTimeout(() => {
+                console.log(2)
+                res(2)
+            },2000)
+        })
+    }
+    const p3 = () => {
+        return new Promise((res,rej) => {
+            setTimeout(() => {
+                console.log(3)
+                res(3)
+            },3000)
+        })
+    }
+    Promise.myAll = function (promises) {
+        return new Promise((res, rej) => {
+            let arr = []
+            // let bol = true
+            promises.forEach(pro => pro.then(r => {
+                arr.push(r)
+                // bol && res(r)
+                arr.length === promises.length && res(arr)
+            }))
+        })
+    }
+    Promise.myAll([p1(),p2(),p3()])
+    .then(r => {
+        console.log(r)
+    })
+</script>

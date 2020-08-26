@@ -1,0 +1,16 @@
+<script>
+    function limitRunTask (task,limit) {
+        return new Promise ((res,rej) => {
+            let finish = 0
+            function run () {
+                while(running < limit) {
+                    const p = tasks[index]()
+                    p.then(r => {
+                        finish ++
+                    })
+                    index ++
+                }
+            }
+        })
+    }
+</script>
