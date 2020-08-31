@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>17_Blog</title>
       </Head>
       <Header/>
       {/* <Button>按钮</Button> */}
