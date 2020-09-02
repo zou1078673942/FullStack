@@ -5,7 +5,7 @@ import styles from './style.css';
 export default function App() {
   const handleLoad = () => {
     import('./dynamic.js').then(r => {
-      console.log(r)
+      console.log(r);
     })
   }
   return (

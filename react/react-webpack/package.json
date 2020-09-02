@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "dll": "webpack --config webpack.dll.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^4.2.2",
+    "happypack": "^5.0.1",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.11.0",
     "style-loader": "^1.2.1",

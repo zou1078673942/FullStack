@@ -34,5 +34,14 @@
     "react-redux": "^7.2.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "html-webpack-plugin": "^4.4.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }

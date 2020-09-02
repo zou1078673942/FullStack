@@ -4,12 +4,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HappyPack = require('happypack');
-
+const webpack = require('webpack');
 // 1. 分离基础库（react/react-dom）可以缓存时间比较久的
 // 业务代码：经常变动的
 
 // extenals
-// 
+
 const config = {
   entry: './src/index.js',
   resolve: {
@@ -19,16 +19,16 @@ const config = {
   //   react: 'React'
   // },
   // chunk
-  optimization: {
-    splitChunks: {
-      chunks: 'all',   // all 所有的 import // async import() 
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-        },
-      }
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',   // all 所有的 import // async import() 
+  //     cacheGroups: {
+  //       vendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //       },
+  //     }
+  //   }
+  // },
   devServer: {
     contentBase: './public',
     hot: true
@@ -76,7 +76,7 @@ const config = {
     new HappyPack({
       // 3) re-add the loaders you replaced above in #1:
       loaders: [ 'babel-loader']
-    })
+    }),
   ]
 }
 module.exports = config

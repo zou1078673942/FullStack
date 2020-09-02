@@ -1,7 +1,7 @@
 .author-div{
     text-align: center;
     padding: 1rem;
-
+    position: fixed;
 }
 .author-div div{
     margin-bottom: 1rem;
