@@ -5,7 +5,7 @@ var Stack = /** @class */ (function () {
         this.items = [];
     }
     Stack.prototype.push = function (item) {
-        this.items.push(item);
+        return this.items.push(item);
     };
     Stack.prototype.pop = function () {
         return this.items.pop();

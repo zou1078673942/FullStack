@@ -4,7 +4,7 @@ export default class Stack {
         this.items = []
     }
     push(item:any){
-        this.items.push(item)
+        return this.items.push(item)
     }
     pop(){
         return this.items.pop()
