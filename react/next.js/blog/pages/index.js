@@ -6,6 +6,7 @@ import '../styles/pages/comm.css'
 import {HomeOutlined,FileTextOutlined,SmileOutlined} from '@ant-design/icons'
 import '../styles/pages/index.css'
 import Author from '../components/Author'
+import Footer from '../components/Footer'
 
 const Home = () => {
 
@@ -47,7 +48,7 @@ const Home = () => {
           <Author/>
         </Col>
       </Row>
-
+      <Footer/>
     </>
   )
 }
