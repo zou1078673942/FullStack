@@ -2256,6 +2256,11 @@ dom-serializer@0:
     domelementtype "^2.0.1"
     entities "^2.0.0"
 
+dom-walk@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.npm.taobao.org/dom-walk/download/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
+  integrity sha1-DFSL7wSPTR8qlySQAiNgYNqj/YQ=
+
 domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/domain-browser/download/domain-browser-1.2.0.tgz?cache=0&sync_timestamp=1597693715407&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdomain-browser%2Fdownload%2Fdomain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
@@ -2441,6 +2446,27 @@ egg-init@^2:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/egg-init/download/egg-init-2.0.0.tgz#4f12827d9a6cb779d7855e622fc1a4355fd78e40"
   integrity sha1-TxKCfZpst3nXhV5iL8GkNV/XjkA=
+  dependencies:
+    co "^4.6.0"
+    colors "^1.3.3"
+    compressing "^1.4.0"
+    egg-init-config "^1.5.0"
+    globby "^9.0.0"
+    inquirer "^7.0.0"
+    is-type-of "^1.2.1"
+    istextorbinary "^2.5.1"
+    mkdirp "^0.5.1"
+    mz-modules "^2.1.0"
+    node-homedir "^1.1.1"
+    npm-updater "^3.0.3"
+    proxy-agent "^2.3.1"
+    urllib "^2.33.0"
+    yargs "^11.1.0"
+
+egg-init@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/egg-init/download/egg-init-2.2.0.tgz#e539d06c5729e4b36458324d950d3c28fe9d9a9e"
+  integrity sha1-5TnQbFcp5LNkWDJNlQ08KP6dmp4=
   dependencies:
     co "^4.6.0"
     colors "^1.3.3"
@@ -3387,6 +3413,14 @@ global-prefix@^3.0.0:
     ini "^1.3.5"
     kind-of "^6.0.2"
     which "^1.3.1"
+
+global@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.npm.taobao.org/global/download/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
+  integrity sha1-PnsQUXkAajI+1xqvyj6cV6XMZAY=
+  dependencies:
+    min-document "^2.19.0"
+    process "^0.11.10"
 
 globals@^11.1.0:
   version "11.12.0"
@@ -4510,7 +4544,7 @@ lodash@4, lodash@^4.17.13, lodash@^4.17.15:
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
 
-lodash@^4.17.19:
+lodash@^4.17.19, lodash@^4.17.20:
   version "4.17.20"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.20.tgz?cache=0&sync_timestamp=1597336053864&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
@@ -4740,6 +4774,13 @@ mimic-response@^1.0.0, mimic-response@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/mimic-response/download/mimic-response-1.0.1.tgz?cache=0&sync_timestamp=1589481080007&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmimic-response%2Fdownload%2Fmimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha1-SSNTiHju9CBjy4o+OweYeBSHqxs=
+
+min-document@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.npm.taobao.org/min-document/download/min-document-2.19.0.tgz#7bd282e3f5842ed295bb748cdd9f1ffa2c824685"
+  integrity sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
+  dependencies:
+    dom-walk "^0.1.0"
 
 mini-store@^3.0.1:
   version "3.0.5"

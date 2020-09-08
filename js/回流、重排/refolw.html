@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='a'>a</div>
+    <div id='b'>b</div>
+    <div id='c'>c</div>
+    <script>
+        const DomA = document.querySelector('#a')
+        const DomB = document.querySelector('#b')
+        const DomC = document.querySelector('#c')
+
+        function timer() {
+            DomA.style.width = DomA.offsetWidth + 1 + 'px'
+            DomB.style.width = DomA.offsetWidth + 1 + 'px'  // offsetWidth
+            DomC.style.width = DomA.offsetWidth + 1 + 'px'  // offsetWidth
+            // width 最后一次执行 layout
+        }
+
+        function timer2() {
+            let el = document.getElementById('a');
+            el.style.width = (el.offsetWidth + 1) + 'px';
+            el.style.width = 1 + 'px'
+            // 1 次
+        }
+
+        setTimeout(() => {
+            timer2()
+        }, 1500)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<style>
+    .dragDom {
+        padding-top: 2000px;
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        position: absolute;
+    }
+</style>
+<div>
+    <div class="dragDom"></div>
+</div>
+<script>
+
+    const body = document.body
+    let timer, start, startTime, bol = true
+    body.onscroll = () => {
+        if (timer) {
+            clearTimeout(timer)
+        }
+        if (bol) {
+            start = body.scrollTop
+            startTime = new Date()
+            bol = false
+        }
+        timer = setTimeout(() => {
+            let v = (body.scrollTop - start) / (new Date() - startTime - 500)
+            let res = v > 0 ? '向下滚动速度为：' + v : '向上滚动速度为：' + (-v)
+            console.log(res, start)
+            clearTimeout(timer)
+            bol = true
+        }, 500);
+    }
+
+</script>

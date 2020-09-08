@@ -21,7 +21,7 @@
         <i :class="icon" v-if="icon"></i>
         <!-- {{type}} - {{tit}} -->
         <!-- <span v-if="$slots.default"> -->
-            <slot></slot>
+        <slot></slot>
         <!-- </span> -->
     </button>
 </template>

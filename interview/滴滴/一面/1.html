@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            border: 1px solid black;
+            width: 10vh;
+            height: 10vh;
+            background-color: green;
+        }
+        #box2{
+            width: 50%;
+            padding-top: 50%;
+            border: 1px solid black;
+        }
+        #box3{
+            width: 3rem;
+            height: 3rem;
+            background-color: yellow;
+        }
+        #box4{
+            width: 30vw;
+            background-color: red;
+        }
+        #box4::after{
+            content:"";
+            display: block;
+            margin-top: 100%;
+            background-color: #ff33ff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="box1"></div>
+    </div>
+    <!-- BFC上下文环境 -->
+    <div>
+        <div id="box2"></div>
+    </div>
+    <!-- rem -->
+    <div>
+        <div id="box3"></div>
+    </div>
+    <div>
+        <div id="box4"></div>
+    </div>
+    <ul id="container">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var a = [1,2,3]
+        var b = a
+        a[0] = 8
+        b[0] = 9
+        // console.log(a,b) // [923]
+        a = [4,5,6]
+        // console.log(a,b) // [456] [923]
+
+        // const ul = document.querySelector('.ul')
+        // let len = ul.childNodes.length
+        // for(let i=len-1; i>=0; i--) {
+        //     ul.appendChild(ul.childNodes[i])
+        // }
+        // console.log(ul)
+        let treeNode = [
+            {name:'1'}
+        ]
+
+        const container = document.querySelector('#container')
+        const fn = (node,tree) => {
+            tree.map(vnode => {
+                const newNode = document.createElement('div').setAttribute('name',vnode.name)
+                node.sub && fn(newNode,node.sub)
+            })
+            return
+        }
+        fn(container,treeNode)
+    </script>
+</body>
+</html>

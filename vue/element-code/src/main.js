@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 // Vue.use(ElementUI) // 全局
 
 Vue.config.productionTip = false
+// Vue.use(ElementUI)
 
 new Vue({
   router,

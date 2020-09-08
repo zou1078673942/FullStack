@@ -1,17 +1,27 @@
-import React ,{useState}from 'react';
-import  { CSSTransition } from 'react-transition-group'
-function Demo(){
-    const [isIn,setIsIn] = useState(true)
-    //移走    ： *-exit  ms  *-exit-active   *-exit-done
-    //移进来  :  *-enter ms  *-enter-active  *-enter-done
+import React, { useState, useEffect, useRef } from 'react'
+import useClock from './useClock'
+
+const Clock = () => {
+
+    // const [count,setCount] = useState(0)
+    const date = useClock()
+
+
+    // const countRef = useRef()
+    // countRef.current = count
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         setCount(countRef.current + 1) 
+    //     },1000)
+    // },[])
+
+
     return (
-        <>
-        <CSSTransition timeout={2000} 
-        classNames='msg' in={isIn}>
-            <div className='box'></div>
-        </CSSTransition>
-        <button onClick={()=>{setIsIn(!isIn)}}>toggle</button>
-        </>
+        <div>
+            {useClock()}
+            {/* <br/>
+            {count} */}
+        </div>
     )
 }
-export default Demo
+export default Clock
